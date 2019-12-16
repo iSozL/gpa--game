@@ -23,16 +23,17 @@ p {
   color: #fdf5d3;
   padding-left: 10vw;
   padding-top: 6vh;
-  font-size: 20px;
+  font-size: 24px;
   letter-spacing: 2px;
 }
 .index-words {
-  padding-top: 140vw;
+  padding-top: 160vw;
   padding-left: 10vw;
   color: #fdf5d3;
 }
 .index-words div {
-  font-size: 18px;
+  font-size: 5.8vw;
   letter-spacing: 1px;
   margin-bottom: 1.5vh;
+  visibility: hidden;
 }
