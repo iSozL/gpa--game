@@ -12,6 +12,10 @@ p {
   margin: 0;
   padding: 0;
 }
+.index-container {
+  width: 100vw;
+  height: 360vw;
+}
 .index-title {
   color: #fdf5d3;
   padding-top: 15vh;
@@ -40,4 +44,15 @@ p {
   letter-spacing: 1px;
   margin-bottom: 1.5vh;
   visibility: hidden;
+}
+.index-get {
+  font-size: 5vw;
+  color: #ffffff;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 99;
+  position: fixed;
+	bottom: 4vh;
 }

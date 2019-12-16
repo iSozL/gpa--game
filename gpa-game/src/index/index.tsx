@@ -29,7 +29,7 @@ const Index = () => {
           eleList[num + 1].style.visibility = "visible"
         }
         showWords(num + 1)
-      }, 5000)
+      }, 1000)
     }
   }
 
@@ -63,6 +63,9 @@ const Index = () => {
           <p>一起来拼出你的校园人设</p>
           <p style={{ fontSize: "6.5vw" }}>惊喜在这里等你...</p>
         </div>
+      </div>
+      <div className="index-get">
+        点击获取你的家园扭蛋
       </div>
     </div>
   )
