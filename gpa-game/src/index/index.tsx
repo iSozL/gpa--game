@@ -1,23 +1,54 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './index.css'
 const Index = () => {
-  function onBottom() {
+  const [flag, setFlag] = useState(true)
+  const onBottom = () => {
     const element: any = document.body
-    element.scrollIntoView({block: "end", behavior: "smooth"});
+    element.scrollIntoView({ block: "end", behavior: "smooth" })
+    if(flag) {
+      showWords(0)
+    }
   }
+
+  const showWords = (count: number) => {
+    setFlag(false)
+    if (count < 3) {
+      let num = count
+      const s1: any = document.getElementById("sentence1")
+      const s2: any = document.getElementById("sentence2")
+      const s3: any = document.getElementById("sentence3")
+      const s4: any = document.getElementById("sentence4")
+      const eleList = [s1, s2, s3, s4]
+      eleList[num].style.visibility = "visible"
+      setTimeout(function() {
+        if(num - 1 >= 0) {
+          eleList[num - 1].style.visibility = "hidden"
+        }
+        eleList[num].style.color = "rgba(253, 245, 211, 0.45)"
+        if(num + 1 < 4) {
+          eleList[num + 1].style.visibility = "visible"
+        }
+        showWords(num + 1)
+      }, 5000)
+    }
+  }
+
+  const change = (eleObj: any) => {
+    eleObj.style.visibility = "visible"
+  }
+
   return (
-    <div id="container" className="index-container">
+    <div id="container" className="index-container" onClick={onBottom}>
       <div className="index-title">2019</div>
       <div className="index-flag">生成的你的年度#TAG#</div>
-      <button onClick={onBottom}></button>
       <div className="index-words">
         <div id="sentence1">
           你即将看到的是<span style={{ fontSize: "6.5vw" }}>家园扭蛋机</span>
-          <div style={{ fontSize: "6.3vw" }}>NCUHOME’S GACHAPON</div>
+          <p style={{ fontSize: "6.3vw" }}>NCUHOME’S GACHAPON</p>
         </div>
         <div id="sentence2">
           正如它的英文名 (咔擦砰)
-          <div><span style={{ fontSize: "8vw", marginLeft: 20 }}>"咔擦"</span>一声</div>
+          <p><span style={{ fontSize: "8vw", marginLeft: 20 }}>"咔擦"</span>一声</p>
         </div>
         <div id="sentence3">
           <p>2019年</p>
