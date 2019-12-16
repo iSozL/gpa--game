@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(../assets//imgs//index-background.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 100vw;
+  height: 360vw;
+}
+.index-title {
+  color: #fdf5d3;
+  padding-top: 15vh;
+  padding-left: 10vw;
+  font-size: 35px;
+  letter-spacing: 2px;
+}
+.index-flag {
+  color: #fdf5d3;
+  padding-left: 10vw;
+  padding-top: 6vh;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
