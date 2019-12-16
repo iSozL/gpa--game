@@ -6,6 +6,11 @@ body {
   background-size: 100% 100%;
   width: 100vw;
   height: 360vw;
+  font-family: jinkai;
+}
+p {
+  margin: 0;
+  padding: 0;
 }
 .index-title {
   color: #fdf5d3;
@@ -20,4 +25,14 @@ body {
   padding-top: 6vh;
   font-size: 20px;
   letter-spacing: 2px;
+}
+.index-words {
+  padding-top: 140vw;
+  padding-left: 10vw;
+  color: #fdf5d3;
+}
+.index-words div {
+  font-size: 18px;
+  letter-spacing: 1px;
+  margin-bottom: 1.5vh;
 }

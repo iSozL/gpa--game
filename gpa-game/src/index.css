@@ -11,3 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@font-face {
+  font-family: jinkai;
+  src: url(./assets/汉仪劲楷简.ttf)
+}
