@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './index.css'
 const Index = () => {
   const [flag, setFlag] = useState(true)
+  const [show, changeShow] = useState(false)
   const onBottom = () => {
     const element: any = document.body
     element.scrollIntoView({ block: "end", behavior: "smooth" })
@@ -28,13 +29,13 @@ const Index = () => {
         if(num + 1 < 4) {
           eleList[num + 1].style.visibility = "visible"
         }
+        // 显示获取扭蛋按钮
+        if(num === 2) {
+          changeShow(true)
+        }
         showWords(num + 1)
-      }, 1000)
+      }, 5000)
     }
-  }
-
-  const change = (eleObj: any) => {
-    eleObj.style.visibility = "visible"
   }
 
   return (
@@ -64,9 +65,7 @@ const Index = () => {
           <p style={{ fontSize: "6.5vw" }}>惊喜在这里等你...</p>
         </div>
       </div>
-      <div className="index-get">
-        点击获取你的家园扭蛋
-      </div>
+      {show ? (<div className="index-get">点击获取你的家园扭蛋</div>) : <div></div>}
     </div>
   )
 }
