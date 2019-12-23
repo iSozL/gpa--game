@@ -2,7 +2,7 @@ import * as React from 'react';
 import './paper.css'
 const Papers = () => {
   return(
-    <div></div>
+    <div className="paper-container"></div>
   )
 }
 export default Papers;
