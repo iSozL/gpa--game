@@ -65,7 +65,7 @@ const Index = () => {
           <p style={{ fontSize: "6.5vw" }}>惊喜在这里等你...</p>
         </div>
       </div>
-      {show ? (<div className="index-get">点击获取你的家园扭蛋</div>) : <div></div>}
+      {show ? (<a className="index-get">点击获取你的家园扭蛋</a>) : <div></div>}
     </div>
   )
 }

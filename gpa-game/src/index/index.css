@@ -54,5 +54,6 @@ p {
   text-align: center;
   z-index: 99;
   position: fixed;
-	bottom: 4vh;
+  bottom: 4vh;
+  text-decoration: none;
 }
