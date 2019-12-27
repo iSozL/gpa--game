@@ -20,10 +20,15 @@ body {
 .paper {
   position: absolute;
   text-align: center;
-  background: url(../assets//imgs/paper.png);
+  background: url(../assets/imgs/paper.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   width: 80vw;
   height: 60vh;
   margin-top: 12vh;
+}
+.paper-bg {
+  background: url(../assets/imgs/yuanqi.png);
+  width: 100%;
+  height: 100%;
 }
