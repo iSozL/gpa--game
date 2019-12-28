@@ -19,8 +19,8 @@
   background: url(../assets/imgs/yuanqi.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  width: 80vw;
-  height: 60vh;
+  width: 85vw;
+  height: 55vh;
 }
 .paper-name {
   margin: 7vh 0 0 12vw;
@@ -34,10 +34,17 @@
   background: rgba(40, 97, 167, .4);
   font-weight: bold;
 }
-.paper-name > div {
+.logo {
   background: black;
   width: 20vw;
   height: 20vw;
-  float: right;
-  margin: 5vh 10vw 0 0;
+  margin: 0 0 0 60%;
+}
+.context {
+  font-family: jinkai;
+  color: rgba(40, 97, 167, .7);
+  font-weight: bold;
+  padding: 0 13vw;
+  font-size: 22px;
+  line-height: 4vh;
 }
