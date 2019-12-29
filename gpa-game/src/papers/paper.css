@@ -14,37 +14,93 @@
   -ms-filter: blur(5px);
   position: static;
 }
-.paper {
+.paper1 {
   position: absolute;
   background: url(../assets/imgs/yuanqi.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   width: 85vw;
-  height: 55vh;
+  height: 58vh;
+}
+.paper2 {
+  position: absolute;
+  background: url(../assets/imgs/zuji.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 85vw;
+  height: 58vh;
+}
+.paper3 {
+  position: absolute;
+  background: url(../assets/imgs/chengjiu.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 85vw;
+  height: 60vh;
+}
+.paper4 {
+  position: absolute;
+  background: url(../assets/imgs/chujian.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 85vw;
+  height: 60vh;
+}
+.paper5 {
+  position: absolute;
+  background: url(../assets/imgs/tixing.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 85vw;
+  height: 60vh;
+}
+.paper6 {
+  position: absolute;
+  background: url(../assets/imgs/jianchi.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 85vw;
+  height: 60vh;
+}
+.paper7 {
+  position: absolute;
+  background: url(../assets/imgs/xiaofei.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 85vw;
+  height: 60vh;
+}
+.paper8 {
+  position: absolute;
+  background: url(../assets/imgs/yishi.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 85vw;
+  height: 60vh;
 }
 .paper-name {
   margin: 7vh 0 0 12vw;
   font-family: jinkai;
-  color: #2861a1;
 }
 .paper-name > span {
   display: inline-block;
   font-size: 25px;
   padding: 5px 25px;
-  background: rgba(40, 97, 167, .4);
   font-weight: bold;
 }
 .logo {
-  background: black;
-  width: 20vw;
-  height: 20vw;
+  width: 18vw;
+  height: 18vw;
   margin: 0 0 0 60%;
 }
 .context {
   font-family: jinkai;
-  color: rgba(40, 97, 167, .7);
   font-weight: bold;
-  padding: 0 13vw;
-  font-size: 22px;
+  padding: 0 14vw 12vw;
+  font-size: 20px;
   line-height: 4vh;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
 }
