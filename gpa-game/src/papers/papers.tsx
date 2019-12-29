@@ -134,7 +134,7 @@ const Papers = () => {
       bg: "paper7",
       bgcolor: "rgba(203, 139, 65, .4)",
       logo: "",
-      ncolor: "#64a1ae",
+      ncolor: "#cb8b41",
       color: "rgba(203, 139, 65, .7)",
       context: <div>本学期,<br />你们寝室的<br />月平均用电量为150度。<br />在本校<br />月平均用电量100度以上的爱用电的寝室,<br />生活一定不会太单调</div>
     },
