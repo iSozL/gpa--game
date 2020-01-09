@@ -1,15 +1,12 @@
 import React, {useState} from 'react';
 import './index.css'
-import $ from 'jquery'
+import {Link} from 'react-router-dom'
 const Index = () => {
   const [flag, setFlag] = useState(true)
   const [show, changeShow] = useState(false)
   const onBottom = () => {
-    $("#test")[0].click()
-    $("a").click(function () {
-      $("html, body").animate({scrollTop: $($(this).attr("href")).offset().top - 20+ "px"}, 500);
-      return false;
-    });
+    const ele = document.body
+    ele.scrollIntoView(false)
     if (flag) {
       showWords(0)
     }
@@ -72,9 +69,9 @@ const Index = () => {
             <p>一起来拼出你的校园人设</p>
             <p style={{ fontSize: "6.5vw" }}>惊喜在这里等你...</p>
           </div>
-          <a href="#sentence1" id="test" style={{visible: "none"}}></a>
+          <Link to="#sentence1" id="test" style={{visible: "none"}}></Link>
         </div>
-        {show ? (<a href="/papers" className="index-get">点击获取你的家园扭蛋</a>) : <div></div>}
+        {show ? (<Link to="/papers" className="index-get">点击获取你的家园扭蛋</Link>) : <div></div>}
       </div>
     </div>
   )

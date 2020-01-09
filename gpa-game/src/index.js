@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
-  Route,
-  Redirect
+  Route
 } from "react-router-dom";
 import './index.css';
 import Index from './index/index.jsx';
@@ -13,7 +12,7 @@ const Routers = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/papers" component={Papers}></Route>
+        <Route path="/papers" component={Papers} exact></Route>
         <Route path="/" component={Index} exact></Route>
       </Switch>
     </Router>
