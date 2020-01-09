@@ -4,8 +4,6 @@ import $ from 'jquery'
 const Index = () => {
   const [flag, setFlag] = useState(true)
   const [show, changeShow] = useState(false)
-  const [loading, changeLoading] = useState(false)
-  const [smooth, canSmooth] = useState(false)
   const onBottom = () => {
     $("#test")[0].click()
     $("a").click(function () {
@@ -19,7 +17,6 @@ const Index = () => {
   window.addEventListener("load", function(event) {
     document.getElementById("container").style.visibility = "visible"
     document.getElementById("loading").style.display = "none"
-    changeLoading(true)
   });
   const showWords = (count) => {
     setFlag(false)

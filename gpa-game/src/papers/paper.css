@@ -1,28 +1,21 @@
-.gif-container {
-  margin: 0;
-  padding: 0;
-  background-image: url(../assets/imgs/nd.gif);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  width: 100vw;
-  height: 100vh;
-  font-family: jinkai;
-}
 .paper-container {
   float: left;
   margin: 0;
   padding: 0;
-  background: url(../assets/imgs/paperbg.jpg);
+  background: url(../assets/imgs/nd.gif);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   width: 100vw;
   height: 100vh;
   font-family: jinkai;
-  -webkit-filter: blur(5px);
+  /* -webkit-filter: blur(5px);
   filter: blur(5px);
   -moz-filter: blur(5px);
-  -ms-filter: blur(5px);
+  -ms-filter: blur(5px); */
   position: static;
+}
+#paper-bg {
+  visibility: hidden;
 }
 .paper1 {
   position: absolute;
