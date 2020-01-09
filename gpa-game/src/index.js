@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router,
@@ -7,9 +7,8 @@ import {
   Redirect
 } from "react-router-dom";
 import './index.css';
-import Index from './index/index.tsx';
-import Papers from './papers/papers.tsx'
-import * as serviceWorker from './serviceWorker';
+import Index from './index/index.jsx';
+import Papers from './papers/papers.jsx'
 const Routers = () => {
   return (
     <Router>
@@ -21,8 +20,3 @@ const Routers = () => {
   )
 } 
 ReactDOM.render(<Routers />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
