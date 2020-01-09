@@ -13,6 +13,7 @@
   -moz-filter: blur(5px);
   -ms-filter: blur(5px); */
   position: static;
+  visibility: hidden;
 }
 #paper-bg {
   visibility: hidden;
@@ -100,7 +101,7 @@
   font-family: jinkai;
   font-weight: bold;
   padding: 0 14vw 12vw;
-  font-size: 20px;
+  font-size: 4.5vw;
   line-height: 4vh;
 }
 .logo img {

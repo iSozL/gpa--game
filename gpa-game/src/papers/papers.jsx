@@ -11,8 +11,14 @@ const Papers = () => {
     document.getElementById('paper-bg').style.visibility = 'visible'
   }, 4000);
   const [index, setIndex] = useState(0)
+  window.addEventListener("load", function(event) {
+    document.getElementById("paper-container").style.visibility = "visible"
+    document.getElementById("paper-loading").style.display = "none"
+  });
   return(
-    <div style={{display: "flex", justifyContent: "center", alignItems: "center"}} onClick={() =>setIndex(index + 1)}>
+    <div>
+      <div className="" id="paper-loading"></div>
+      <div style={{display: "flex", justifyContent: "center", alignItems: "center"}} onClick={() =>setIndex(index + 1)}>
       <div className="paper-container" id="paper-container"></div>
       <div className={papers[index].bg} id="paper-bg">
         <div key={index}>
@@ -26,6 +32,7 @@ const Papers = () => {
             }
           </div>
           <div className="context" style={{color: papers[index].color}}>{papers[index].context}</div>
+          </div>
         </div>
       </div>
     </div>
