@@ -45,8 +45,7 @@ const Index = () => {
     <div>
       <div id="loading">loading</div>
       <div id="container" className="index-container" onClick={onBottom}>
-        <div className="index-title">2019</div>
-        <div className="index-flag">生成的你的年度#TAG#</div>
+        <div className="index-title">2019<span className="index-flag">生成的你的年度#TAG#</span></div>
         <div className="index-words">
           <div id="sentence1">
             你即将看到的是<span style={{ fontSize: "6.5vw" }}>家园扭蛋机</span>

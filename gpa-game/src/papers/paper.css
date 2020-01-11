@@ -1,3 +1,6 @@
+#paper-show {
+  visibility: hidden;
+}
 .paper-container {
   float: left;
   margin: 0;
@@ -13,7 +16,7 @@
   -moz-filter: blur(5px);
   -ms-filter: blur(5px); */
   position: static;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 #paper-bg {
   visibility: hidden;
