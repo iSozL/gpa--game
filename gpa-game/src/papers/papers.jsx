@@ -2,15 +2,16 @@ import React, {useState} from 'react';
 import './paper.css'
 import papers from '../utils/data'
 const Papers = () => {
-  const test = () => {
-    console.log('ok')
+  if(window.location.href.indexOf('#reloaded')==-1){ //判断是否有刷新标记
+    window.location.href=window.location.href+"#reloaded";//没有添加标记
+    window.location.reload();//刷新
   }
-  window.addEventListener("test", function(event) {
+  window.onload = function() {
     console.log("finish loading")
     document.getElementById("paper-show").style.visibility = "visible"
     document.getElementById("paper-loading").style.display = "none"
     start()
-  });
+  }
   const start = () => {
     setTimeout(() => {
       document.getElementById('paper-container').style.filter = 'blur(5px)'
