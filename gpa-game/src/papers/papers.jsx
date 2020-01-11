@@ -20,6 +20,7 @@ const Papers = () => {
       document.getElementById('paper-container').style.webkitFilter = 'blur(5px)'
       document.getElementById('paper-container').style.oFilter = 'blur(5px)'
       document.getElementById('paper-bg').style.visibility = 'visible'
+      document.getElementById('puzzle').style.visibility = 'visible'
     }, 4000);
   }
   const [index, setIndex] = useState(0)
@@ -27,6 +28,7 @@ const Papers = () => {
     <div>
       <div style={{width: "20px", background: "red"}} id="paper-loading">loading</div>
       <div id="paper-show">
+        <img id="puzzle" src={papers[index].puzzle} className="puzzle"></img>
         <div style={{display: "flex", justifyContent: "center", alignItems: "center"}} onClick={() =>setIndex(index + 1)}>
         <div className="paper-container" id="paper-container"></div>
         <div className={papers[index].bg} id="paper-bg">
