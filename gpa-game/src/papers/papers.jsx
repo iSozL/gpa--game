@@ -59,7 +59,7 @@ const Papers = () => {
   const Before = () => {
     return (
       <div className="paper-before" id="paper-before" onClick={() => {start();isShow(true)}}>
-        <div></div>
+        <img className="sway" src={require("../assets/imgs/yaozhui.png")}></img>
       </div>
     )
   }
