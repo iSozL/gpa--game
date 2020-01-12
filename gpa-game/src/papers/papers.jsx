@@ -4,14 +4,14 @@ import papers from '../utils/data'
 const Papers = () => {
   const [index, setIndex] = useState(Number(localStorage.getItem("papers")))
   const [show, isShow] = useState(false)
-
+  // 自动刷新一次
   if(window.location.href.indexOf('#reloaded')==-1){ //判断是否有刷新标记
     window.location.href=window.location.href+"#reloaded";//没有添加标记
     window.location.reload();//刷新
   }
   window.onload = function() {
     console.log("finish loading")
-    document.getElementById("paper-before").style.visibility = "visible"
+    document.getElementById("flip").style.visibility = "visible"
     document.getElementById("paper-loading").style.display = "none"
   }
   const start = () => {
@@ -24,6 +24,16 @@ const Papers = () => {
       document.getElementById('paper-bg').style.visibility = 'visible'
       document.getElementById('puzzle').style.visibility = 'visible'
     }, 4000);
+  }
+  const flip = () => {
+    document.getElementById("unflip").style.visibility = "visible"
+    document.getElementById('flip').style.transform = 'rotateX(180deg)'
+    setTimeout(function() {document.getElementById("paper-before").style.visibility = "hidden"}, 1000)
+  }
+  const unflip = () => {
+    document.getElementById("paper-before").style.visibility = "visible"
+    document.getElementById('flip').style.transform = 'rotateX(0deg)'
+    setTimeout(function() {document.getElementById("unflip").style.visibility = "hidden"}, 1000)
   }
   if(localStorage.getItem('papers') > 16) {
     localStorage.removeItem('papers')
@@ -58,8 +68,17 @@ const Papers = () => {
   }
   const Before = () => {
     return (
-      <div className="paper-before" id="paper-before" onClick={() => {start();isShow(true)}}>
-        <img className="sway" src={require("../assets/imgs/yaozhui.png")}></img>
+      <div className="flip" id="flip">
+        <div className="paper-before" id="paper-before">
+          <div className="click" onClick={() => {start();isShow(true)}}></div>
+          <img id="before" className="sway" src={require("../assets/imgs/yaozhui.png")} onClick={flip}></img>
+        </div>
+        <div className="puzzle-after" id="unflip">
+          <div className="puzzle-flip">
+            <img src={require("../assets/imgs/1.png")} />
+            <img className="back" src={require("../assets/imgs/back.png")} onClick={unflip} />
+          </div>
+        </div>
       </div>
     )
   }
