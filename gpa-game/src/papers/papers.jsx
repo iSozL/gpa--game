@@ -24,13 +24,19 @@ const Papers = () => {
       document.getElementById('puzzle').style.visibility = 'visible'
     }, 4000);
   }
-  const [index, setIndex] = useState(0)
+  if(localStorage.getItem('papers') > 16) {
+    localStorage.removeItem('papers')
+  }
+  if(!localStorage.getItem("papers")) {
+    localStorage.setItem("papers", 0)
+  }
+  const [index, setIndex] = useState(Number(localStorage.getItem("papers")))
   return(
     <div>
       <div style={{width: "20px", background: "red"}} id="paper-loading">loading</div>
       <div id="paper-show">
         <img id="puzzle" src={papers[index].puzzle} className="puzzle"></img>
-        <div style={{display: "flex", justifyContent: "center", alignItems: "center"}} onClick={papers[index].end ? () =>{window.location.hash = "/papers"} : () =>setIndex(index + 1)}>
+        <div style={{display: "flex", justifyContent: "center", alignItems: "center"}} onClick={papers[index].end ? () =>{;localStorage.setItem('papers', index + 1);window.location.hash = "/papers"} : () =>setIndex(index + 1)}>
         <div className="paper-container" id="paper-container"></div>
         <div className={papers[index].bg} id="paper-bg">
           <div key={index}>
