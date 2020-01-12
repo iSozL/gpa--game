@@ -1,17 +1,18 @@
 import React, {useState} from 'react';
 import './paper.css'
 import papers from '../utils/data'
-import {Link} from 'react-router-dom'
 const Papers = () => {
+  const [index, setIndex] = useState(Number(localStorage.getItem("papers")))
+  const [show, isShow] = useState(false)
+
   if(window.location.href.indexOf('#reloaded')==-1){ //判断是否有刷新标记
     window.location.href=window.location.href+"#reloaded";//没有添加标记
     window.location.reload();//刷新
   }
   window.onload = function() {
     console.log("finish loading")
-    document.getElementById("paper-show").style.visibility = "visible"
+    document.getElementById("paper-before").style.visibility = "visible"
     document.getElementById("paper-loading").style.display = "none"
-    start()
   }
   const start = () => {
     setTimeout(() => {
@@ -30,10 +31,9 @@ const Papers = () => {
   if(!localStorage.getItem("papers")) {
     localStorage.setItem("papers", 0)
   }
-  const [index, setIndex] = useState(Number(localStorage.getItem("papers")))
-  return(
-    <div>
-      <div style={{width: "20px", background: "red"}} id="paper-loading">loading</div>
+
+  const Show = () => {
+    return (
       <div id="paper-show">
         <img id="puzzle" src={papers[index].puzzle} className="puzzle"></img>
         <div style={{display: "flex", justifyContent: "center", alignItems: "center"}} onClick={papers[index].end ? () =>{;localStorage.setItem('papers', index + 1);window.location.hash = "/papers"} : () =>setIndex(index + 1)}>
@@ -54,6 +54,19 @@ const Papers = () => {
           </div>
         </div>
       </div>
+    )
+  }
+  const Before = () => {
+    return (
+      <div className="paper-before" id="paper-before" onClick={() => {start();isShow(true)}}>
+        <div></div>
+      </div>
+    )
+  }
+  return(
+    <div>
+      <div style={{width: "20px", background: "red"}} id="paper-loading">loading</div>
+      {show ? <Show /> : <Before />}
     </div>
   )
 }
