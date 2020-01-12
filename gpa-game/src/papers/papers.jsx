@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './paper.css'
 import papers from '../utils/data'
+import {Link} from 'react-router-dom'
 const Papers = () => {
   if(window.location.href.indexOf('#reloaded')==-1){ //判断是否有刷新标记
     window.location.href=window.location.href+"#reloaded";//没有添加标记
@@ -29,7 +30,7 @@ const Papers = () => {
       <div style={{width: "20px", background: "red"}} id="paper-loading">loading</div>
       <div id="paper-show">
         <img id="puzzle" src={papers[index].puzzle} className="puzzle"></img>
-        <div style={{display: "flex", justifyContent: "center", alignItems: "center"}} onClick={() =>setIndex(index + 1)}>
+        <div style={{display: "flex", justifyContent: "center", alignItems: "center"}} onClick={papers[index].end ? () =>{window.location.hash = "/papers"} : () =>setIndex(index + 1)}>
         <div className="paper-container" id="paper-container"></div>
         <div className={papers[index].bg} id="paper-bg">
           <div key={index}>
