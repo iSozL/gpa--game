@@ -148,10 +148,10 @@ body {
   }
 }
 .flip {
-  /* margin: 0;
-  padding: 0; */
+  margin: 0;
+  padding: 0;
   /* visibility: hidden; */
-  position: relative;
+  position: fixed;
   /* overflow: hidden; */
   width: 100vw;
   height: 100vh;
@@ -197,5 +197,8 @@ body {
   height: 35vw;
   bottom: 18vh;
   right: 20vw;
-  /* z-index: 99999; */
+}
+.puzzle-bg {
+  width: 100vw;
+  height: 100vh;
 }

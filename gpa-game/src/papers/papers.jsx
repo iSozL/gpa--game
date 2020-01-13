@@ -41,7 +41,7 @@ const Papers = (props) => {
         </div>
         <div className="puzzle-after" id="unflip">
           <div className="puzzle-flip">
-            {show.index > 0 ? <img src={require(`../assets/imgs/${paper[show.index - 1].id}.png`)} /> : ""}
+            {show.index > 0 ? <img className="puzzle-bg" src={require(`../assets/imgs/${paper[show.index - 1].id}.png`)} /> : ""}
             <img className="back" src={require("../assets/imgs/back.png")} onClick={unflip} />
           </div>
         </div>
