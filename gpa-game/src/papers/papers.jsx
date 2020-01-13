@@ -1,4 +1,5 @@
 import React, {useState, Suspense, useContext} from 'react';
+import Loading from "../components/loading"
 import './paper.css'
 import {showContext, UPDATE_SHOW, UPDATE_INDEX} from './show'
 import papers from '../utils/data'
@@ -52,7 +53,7 @@ const Papers = (props) => {
   }
   return(
     <div>
-      {Boolean(show.show) ? <Suspense fallback={<div>loading</div>}><Test /></Suspense> : <Before />}
+      {Boolean(show.show) ? <Suspense fallback={<Loading />}><Test /></Suspense> : <Before />}
     </div>
   )
 }
