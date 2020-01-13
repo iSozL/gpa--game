@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './index.css'
+import Loading from "../components/loading"
 import {Link} from 'react-router-dom'
 const Index = () => {
   const [flag, setFlag] = useState(true)
@@ -11,10 +12,10 @@ const Index = () => {
       showWords(0)
     }
   }
-  // window.addEventListener("load", function(event) {
-  //   document.getElementById("container").style.visibility = "visible"
-  //   document.getElementById("loading").style.display = "none"
-  // });
+  window.addEventListener("load", function(event) {
+    document.getElementById("container").style.visibility = "visible"
+    document.getElementById("loading").style.display = "none"
+  });
   const showWords = (count) => {
     setFlag(false)
     if (count < 3) {
@@ -43,7 +44,7 @@ const Index = () => {
   }
   return (
     <div>
-      {/* <div id="loading">loading</div> */}
+      <div id="loading"><Loading /></div>
       <div id="container" className="index-container" onClick={onBottom}>
         <div className="index-title">2019<span className="index-flag">生成的你的年度#TAG#</span></div>
         <div className="index-words">

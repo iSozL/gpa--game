@@ -7,7 +7,7 @@
   width: 100vw;
   height: 360vw;
   font-family: jinkai;
-  /* visibility: hidden; */
+  visibility: hidden;
 }
 p {
   margin: 0;

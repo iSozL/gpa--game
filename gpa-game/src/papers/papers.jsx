@@ -24,12 +24,12 @@ const Papers = (props) => {
   const flip = () => {
     document.getElementById("unflip").style.visibility = "visible"
     document.getElementById('flip').style.transform = 'rotateX(180deg)'
-    setTimeout(function() {document.getElementById("paper-before").style.visibility = "hidden"}, 1000)
+    setTimeout(function() {document.getElementById("paper-before").style.visibility = "hidden"}, 0)
   }
   const unflip = () => {
     document.getElementById("paper-before").style.visibility = "visible"
     document.getElementById('flip').style.transform = 'rotateX(0deg)'
-    setTimeout(function() {document.getElementById("unflip").style.visibility = "hidden"}, 1000)
+    setTimeout(function() {document.getElementById("unflip").style.visibility = "hidden"}, 0)
   }
   const Test = React.lazy(() => import('./test'))
   const Before = () => {

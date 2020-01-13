@@ -7,22 +7,8 @@ import {
 } from "react-router-dom";
 import './index.css';
 import Loading from "./components/loading"
-const IndexContext = React.lazy(() => import("./index/index"))
-const Index = () => {
-  return (
-    <Suspense fallback={<Loading />}>
-      <IndexContext />
-    </Suspense>
-  )
-}
-const PapersContext = React.lazy(() => import("./papers/index"))
-const Papers = () => {
-  return (
-    <Suspense fallback={<Loading />}>
-      <PapersContext />
-    </Suspense>
-  )
-}
+import Index from "./index/index"
+import Papers from "./papers/index"
 const CharactersContext = React.lazy(() => import("./characters/index"))
 const Characters = () => {
   return (
