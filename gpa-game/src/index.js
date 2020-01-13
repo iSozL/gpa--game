@@ -6,6 +6,7 @@ import {
   Route
 } from "react-router-dom";
 import './index.css';
+import Loading from "./components/loading"
 const IndexContext = React.lazy(() => import("./index/index"))
 const Index = () => {
   return (
@@ -37,6 +38,7 @@ const Routers = () => {
         <Route path="/papers" component={Papers} exact></Route>
         <Route path="/" component={Index} exact></Route>
         <Route path="/characters" component={Characters}></Route>
+        <Route path="/loading" component={Loading}></Route>
       </Switch>
     </Router>
   )

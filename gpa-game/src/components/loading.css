@@ -1,0 +1,11 @@
+.loading {
+  background: #14182f;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading-gif {
+  box-shadow: 0 0 10px 10px rgba(225, 225, 225, .6);
+}
