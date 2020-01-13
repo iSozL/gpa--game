@@ -9,6 +9,7 @@ import './index.css';
 import Loading from "./components/loading"
 import Index from "./index/index"
 import Papers from "./papers/index"
+import Letter from "./letter/index"
 const CharactersContext = React.lazy(() => import("./characters/index"))
 const Characters = () => {
   return (
@@ -24,6 +25,7 @@ const Routers = () => {
         <Route path="/papers" component={Papers} exact></Route>
         <Route path="/" component={Index} exact></Route>
         <Route path="/characters" component={Characters}></Route>
+        <Route path="/letter" component={Letter} />
       </Switch>
     </Router>
   )

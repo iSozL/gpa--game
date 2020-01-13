@@ -40,3 +40,9 @@
     height: 70vw;
   }
 }
+.get {
+  position: absolute;
+  bottom: 10vh;
+  color: #fdf5d3;
+  font-size: 20px;
+}

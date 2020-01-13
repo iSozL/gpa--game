@@ -1,6 +1,7 @@
 import React from "react"
 import './index.css'
 import Loading from "../components/loading"
+import {Link} from "react-router-dom"
 const Characters = () => {
   if(window.location.href.indexOf('#reload')==-1){ //判断是否有刷新标记
     window.location.href=window.location.href+"#reload";//没有添加标记
@@ -30,7 +31,8 @@ const Characters = () => {
     <div>
       <div id="char-loading"><Loading /></div>
       <div className="characters-container" id="char">
-        <img src={imgs[opp - 1]} className="characters"></img>
+        <img src={imgs[opp - 1].img} className="characters"></img>
+        <Link to="/letter" className="get">点击获取你的人设报告</Link>
       </div>
     </div>
   )
