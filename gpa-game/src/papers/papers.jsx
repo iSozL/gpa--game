@@ -6,7 +6,7 @@ import papers from '../utils/data'
 const Papers = (props) => {
   const {show, dispatch} = useContext(showContext)
   if(show.index > 16) {
-    window.location.hash = "/"
+    window.location.hash = "/characters"
   }
   const paper = papers
   const start = () => {
