@@ -1,5 +1,5 @@
 .loading {
-  background: #14182f;
+  background: radial-gradient(#383b44, #383b44 5%, #14182f);
   width: 100vw;
   height: 100vh;
   display: flex;
