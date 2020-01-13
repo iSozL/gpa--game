@@ -12,6 +12,30 @@
   align-items: center;
 }
 .characters {
-  width: 200px;
-  height: 200px;
+  width: 55vw;
+  height: 55vw;
+  animation:charact 2s;
+	-webkit-animation:charact 2s; /* Safari and Chrome */
+}
+@keyframes charact
+{
+	0% {
+    width: 55vw;
+    height: 55vw;
+  }
+  100% {
+    width: 70vw;
+    height: 70vw;
+  }
+}
+
+@-webkit-keyframes charact {
+  0% {
+    width: 55vw;
+    height: 55vw;
+  }
+  100% {
+    width: 70vw;
+    height: 70vw;
+  }
 }
