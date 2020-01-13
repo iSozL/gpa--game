@@ -31,9 +31,6 @@ const Papers = (props) => {
     document.getElementById('flip').style.transform = 'rotateX(0deg)'
     setTimeout(function() {document.getElementById("unflip").style.visibility = "hidden"}, 1000)
   }
-  if(localStorage.getItem('papers') >= 17) {
-    localStorage.removeItem('papers')
-  }
   const Test = React.lazy(() => import('./test'))
   const Before = () => {
     return (
@@ -52,7 +49,7 @@ const Papers = (props) => {
     )
   }
   return(
-    <div>
+    <div style={{width: "100vw", height: "100vh"}}>
       {Boolean(show.show) ? <Suspense fallback={<Loading />}><Test /></Suspense> : <Before />}
     </div>
   )
