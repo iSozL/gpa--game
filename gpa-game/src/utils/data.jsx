@@ -1,4 +1,11 @@
 import React from 'react'
+import axios from "axios"
+import Request from "../utils/apiRequest"
+axios.get("http://guoxy.top/api/h5/data", {params: JSON.stringify({"xh": "6109118082"})}).then(
+  res => {
+    console.log(res.data)
+  }
+)
 const papers = [
   {
     id: 1,
