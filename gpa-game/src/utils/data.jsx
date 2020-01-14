@@ -1,11 +1,11 @@
 import React from 'react'
-import axios from "axios"
 import Request from "../utils/apiRequest"
-axios.get("http://guoxy.top/api/h5/data", {params: JSON.stringify({"xh": "6109118082"})}).then(
+Request.fetchData("/api/h5/data", "get", null, {xh: 6109118082}).then(
   res => {
-    console.log(res.data)
+    localStorage.setItem("papers", JSON.stringify(res.data.data))
   }
 )
+const data = JSON.parse(localStorage.getItem("papers"))
 const papers = [
   {
     id: 1,
@@ -17,7 +17,7 @@ const papers = [
     ncolor: "#2861a1",
     color: "rgba(40, 97, 167, .7)",
     end: true,
-    context: <div>2019年9月14日,<br />南昌大学正式与你相遇。<br />直到现在,<br />校徽上的蓝色香樟<br />已经见证你一个学期的大学生活。</div>
+    context: <div>{data.page_1.join_year}年{data.page_1.month}月,<br />南昌大学正式与你相遇。<br />直到现在,<br />校徽上的蓝色香樟<br />已经见证你{data.page_1.semester_spent}个学期的大学生活。</div>
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ const papers = [
     ncolor: "#6fa16a",
     color: "rgba(111, 161, 106, .7)",
     end: false,
-    context: <div>这个学期,<br />你见过南大90个夜晚里形状各异的月亮,<br />坐在教室里<br />听了600次上课铃</div>
+    context: <div>这个学期,<br />你见过南大{data.page_3.pass_days}个夜晚里形状各异的月亮,<br />坐在教室里<br />听了{data.page_3.total_course_hours}次上课铃</div>
   },
   {
     id: 2,
@@ -41,7 +41,7 @@ const papers = [
     ncolor: "#6fa16a",
     color: "rgba(111, 161, 106, .7)",
     end: true,
-    context: <div>关于课堂的模样<br />你的体会或许<br />比全校65%<br />的同学更深</div>
+    context: <div>关于课堂的模样<br />你的体会或许<br />比全校{parseInt(data.page_3.course_hours_defeat)}%<br />的同学更深</div>
   },
   {
     id: 3,
@@ -53,7 +53,7 @@ const papers = [
     ncolor: "#d8c34c",
     color: "rgba(216, 195, 76, .7)",
     end: false,
-    context: <div>星光不负赶路人。<br />高达16的学分<br />没有辜负你。<br />在专业排名前1%<br />4.0的平均绩点<br />也在肯定着你的努力</div>
+    context: <div>星光不负赶路人。<br />高达{data.page_4.page_4_data.credits_taken}的学分<br />没有辜负你。<br />在专业排名前{data.page_4.page_4_data.gpa_rank}%<br />{data.page_4.page_4_data.gpa}平均绩点<br />也在肯定着你的努力</div>
   },
   {
     id: 3,
@@ -65,8 +65,9 @@ const papers = [
     ncolor: "#d8c34c",
     color: "rgba(216, 195, 76, .7)",
     end: false,
-    context: <div>不知不觉中,<br />你已经修满了10个学分<br />4.0的平均绩点,<br />为你的大学生活,<br />留下了珍贵的足迹。<br />加油！<br />未来的你,<br />一定还有着更好的模样</div>
+    context: <div>不知不觉中,<br />你已经修满了{data.page_4.page_4_data.credits_taken}个学分<br />{data.page_4.page_4_data.gpa}的平均绩点,<br />为你的大学生活,<br />留下了珍贵的足迹。<br />加油！<br />未来的你,<br />一定还有着更好的模样</div>
   },
+  // 19的
   {
     id: 3,
     name: "成就",
@@ -101,7 +102,7 @@ const papers = [
     ncolor: "#ecb3b5",
     color: "rgba(236, 179, 181, .7)",
     end: false,
-    context: <div>2019年9月16日<br />你在人文楼上了大学的第一堂课。</div>
+    context: <div>{data.page_2.join_year}年9月{data.page_2.first_class_day}日<br />你在人{data.page_2.first_class_address}上了大学的第一堂课。</div>
   },
   {
     id: 4,
@@ -113,7 +114,7 @@ const papers = [
     ncolor: "#ecb3b5",
     color: "rgba(236, 179, 181, .7)",
     end: true,
-    context: <div>在那儿,<br />李淑婷老师与你初见。<br />也许在毕业季,<br />你还会想重温那天那节<br />中国古代文学作品选读</div>
+    context: <div>在那儿,<br />{data.page_2.first_class_teacher}老师与你初见。<br />也许在毕业季,<br />你还会想重温那天那节<br />{data.page_2.first_class_name}</div>
   },
   {
     id: 5,
@@ -186,7 +187,7 @@ const papers = [
     ncolor: "#cb8b41",
     color: "rgba(203, 139, 65, .7)",
     end: true,
-    context: <div>本学期,<br />你们寝室的<br />月平均用电量为150度。<br />在本校<br />月平均用电量100度以上的爱用电的寝室,<br />生活一定不会太单调</div>
+    context: <div>本学期,<br />你们寝室的<br />月平均用电量为{data.page_7.elec_expense}度。<br />在本校<br />月平均用电量100度以上的爱用电的寝室,<br />生活一定不会太单调</div>
   },
   {
     id: 8,
@@ -198,7 +199,7 @@ const papers = [
     ncolor: "#a9a9a9",
     color: "rgba(169,169,169, .7)",
     end: false,
-    context: <div>最大的遗憾,<br />大概就是<br />捡到你东西的人没法联系你<br />不过还好,<br />这学期已有76人<br />通过失物招领功能<br />寻回了自己的失物</div>
+    context: <div>最大的遗憾,<br />大概就是<br />捡到你东西的人没法联系你<br />不过还好,<br />这学期已有7836人<br />通过失物招领功能<br />寻回了自己的失物</div>
   },
   {
     id: 8,
@@ -210,7 +211,7 @@ const papers = [
     ncolor: "#a9a9a9",
     color: "rgba(169,169,169, .7)",
     end: true,
-    context: <div>我们因此少了76次遗憾<br />也愿更多的爱心<br />在这里传递下去。</div>
+    context: <div>我们因此少了7836次遗憾<br />也愿更多的爱心<br />在这里传递下去。</div>
   }
 ]
 export default papers
