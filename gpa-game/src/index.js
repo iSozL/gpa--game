@@ -1,4 +1,4 @@
-import React, {Suspense} from 'react';
+import React, {Suspense, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import {
   HashRouter as Router,
@@ -10,6 +10,7 @@ import Loading from "./components/loading"
 import Index from "./index/index"
 import Papers from "./papers/index"
 import Letter from "./letter/index"
+import Miracle from "incu-webview"
 const CharactersContext = React.lazy(() => import("./characters/index"))
 const Characters = () => {
   return (
@@ -19,6 +20,10 @@ const Characters = () => {
   )
 }
 const Routers = () => {
+  useEffect(()=>{
+    let token = JSON.stringify(Miracle.getData()) !== '{}' ? Miracle.getData().user.token : ""
+    localStorage.setItem("token", token)
+  })
   return (
     <Router>
       <Switch>
