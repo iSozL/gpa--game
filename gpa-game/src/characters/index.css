@@ -46,3 +46,27 @@
   color: #fdf5d3;
   font-size: 20px;
 }
+.words1 {
+  position: absolute;
+  top: 4vh;
+  left: 4vw;
+  width: 30vw;
+}
+.words2 {
+  position: absolute;
+  width: 30vw;
+  top: 14vh;
+  right: 20vw
+}
+.words3 {
+  position: absolute;
+  width: 40vw;
+  top: 4vh;
+  right: 4vw
+}
+.words4 {
+  position: absolute;
+  width: 17vw;
+  top: 20vh;
+  left: 15vw
+}
