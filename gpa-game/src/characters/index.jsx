@@ -103,17 +103,23 @@ class Characters extends React.Component {
       document.getElementById("char").style.visibility = "visible"
       document.getElementById("char-loading").style.display = "none"
     }
+    // 防止不显示
+    setTimeout(() => {
+      console.log("finish loading")
+      document.getElementById("char").style.visibility = "visible"
+      document.getElementById("char-loading").style.display = "none"
+    }, 10000);
     return (
       <div>
         <div id="char-loading"><Loading /></div>
         <div className="characters-container" id="char">
           <img src={imgs[opp - 1].img} className="characters"></img>
+          {this.state.show != null ? <img src={this.state.show} className="words1" /> : ""}
+          {this.state.show1 != null ? <img src={this.state.show1} className="words2" /> : ""}
+          {this.state.show2 != null ? <img src={this.state.show2} className="words3" /> : ""}
+          {this.state.show3 != null ? <img src={this.state.show3} className="words4" /> : ""}
           <Link to="/letter" className="get">点击获取小家园的信</Link>
         </div>
-        {this.state.show != null ? <img src={this.state.show} className="words1" /> : ""}
-        {this.state.show1 != null ? <img src={this.state.show1} className="words2" /> : ""}
-        {this.state.show2 != null ? <img src={this.state.show2} className="words3" /> : ""}
-        {this.state.show3 != null ? <img src={this.state.show3} className="words4" /> : ""}
       </div>
     )
   }

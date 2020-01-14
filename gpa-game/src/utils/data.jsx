@@ -1,10 +1,13 @@
 import React from 'react'
 import Request from "../utils/apiRequest"
-Request.fetchData("/api/h5/data", "get", null, {xh: 6109118082}).then(
-  res => {
-    localStorage.setItem("papers", JSON.stringify(res.data.data))
-  }
-)
+if(localStorage.getItem("papers") === null || localStorage.getItem("paper") === undefined ) {
+  Request.fetchData("/api/h5/data", "get", null, {xh: 6109118082}).then(
+    res => {
+      localStorage.setItem("papers", JSON.stringify(res.data.data))
+      window.location.reload()
+    }
+  )
+}
 const data = JSON.parse(localStorage.getItem("papers"))
 const papers = [
   {

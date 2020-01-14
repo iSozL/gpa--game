@@ -5,7 +5,7 @@ import {showContext, UPDATE_SHOW, UPDATE_INDEX} from './show'
 import papers from '../utils/data'
 const Papers = (props) => {
   const {show, dispatch} = useContext(showContext)
-  if(show.index > 16) {
+  if(show.index > papers.length - 1) {
     window.location.hash = "/characters"
   }
   const paper = papers
