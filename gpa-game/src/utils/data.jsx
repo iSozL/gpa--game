@@ -3,6 +3,8 @@ import Request from "../utils/apiRequest"
 import Miracle from "incu-webview"
 import axios from "axios"
 let token = JSON.stringify(Miracle.getData())!=='{}' ? Miracle.getData().user.token : ''
+// alert(token)
+console.log(token)
 if(localStorage.getItem("papers") === null || localStorage.getItem("papers") === undefined || localStorage.getItem("other") === null ) {
   Request.fetchData("/api/h5/data", "get", null, {xh: 6109119082}).then(
     res => {

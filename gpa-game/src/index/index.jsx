@@ -1,8 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './index.css'
 import Loading from "../components/loading"
 import {Link} from 'react-router-dom'
+import Miracle from 'incu-webview'
 const Index = () => {
+  const [test, setTest] = useState(null)
+  useEffect(() => {
+    const onAppReady = Miracle.onAppReady(() => {
+      console.log(Miracle.getData())
+    })
+    setTest(onAppReady)
+    console.log(onAppReady, test)
+  })
   const [flag, setFlag] = useState(true)
   const [show, changeShow] = useState(false)
   const onBottom = () => {
