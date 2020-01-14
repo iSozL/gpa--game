@@ -3,7 +3,7 @@ import './index.css'
 import Loading from "../components/loading"
 import {Link} from "react-router-dom"
 import Request from "../utils/apiRequest"
-// window.localStorage.clear()
+window.localStorage.clear()
 if(window.location.href.indexOf('#reload')==-1){ //判断是否有刷新标记
   window.location.href=window.location.href+"#reload";//没有添加标记
   window.location.reload();//刷新
