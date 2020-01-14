@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "@types/jquery": "^3.3.31",
     "axios": "^0.19.1",
+    "incu-webview": "^1.0.12",
     "iostore": "0.0.5",
     "jquery": "^3.4.1",
     "react": "^16.12.0",

@@ -1,14 +1,29 @@
 import React from 'react'
 import Request from "../utils/apiRequest"
-if(localStorage.getItem("papers") === null || localStorage.getItem("paper") === undefined ) {
-  Request.fetchData("/api/h5/data", "get", null, {xh: 6109118082}).then(
+import Miracle from "incu-webview"
+import axios from "axios"
+let token = JSON.stringify(Miracle.getData())!=='{}' ? Miracle.getData().user.token : 'passport eyJhbGciOiJIUzI1NiIsImlhdCI6MTU3ODk5MjU4NiwiZXhwIjoxNTc4OTk1NTg2fQ.eyJpZCI6Ijk5ODY3Mzg4MTciLCJleHAiOjE1Nzg5OTU1ODYsInhoIjoiNjEwOTExODA4MiJ9.vAMuc637BVsrrwQn0aa7AawZnA-kLb_sZ4I2jKDqDJ8'
+if(localStorage.getItem("papers") === null || localStorage.getItem("papers") === undefined || localStorage.getItem("other") === null ) {
+  Request.fetchData("/api/h5/data", "get", null, {xh: 6109119082}).then(
     res => {
       localStorage.setItem("papers", JSON.stringify(res.data.data))
       window.location.reload()
     }
   )
+  axios.get("http://incu-api.ncuos.com/v2/api/todo", {headers: { Authorization: token }}).then(
+    res => {
+      localStorage.setItem("other", JSON.stringify(res.data.items))
+    }
+  )
+  axios.get("http://incu-api.ncuos.com/v2/api/todo/my", {headers: {Authorization: token}}).then(
+    res => {
+      localStorage.setItem("my", JSON.stringify(res.data.items))
+    }
+  )
 }
 const data = JSON.parse(localStorage.getItem("papers"))
+const my = JSON.parse(localStorage.getItem("my"))
+const other = JSON.parse(localStorage.getItem("other"))
 const papers = [
   {
     id: 1,
@@ -20,7 +35,7 @@ const papers = [
     ncolor: "#2861a1",
     color: "rgba(40, 97, 167, .7)",
     end: true,
-    context: <div>{data.page_1.join_year}年{data.page_1.month}月,<br />南昌大学正式与你相遇。<br />直到现在,<br />校徽上的蓝色香樟<br />已经见证你{data.page_1.semester_spent}个学期的大学生活。</div>
+    context: <div>{data.page_1.join_year}年{data.page_1.join_month}月,<br />南昌大学正式与你相遇。<br />直到现在,<br />校徽上的蓝色香樟<br />已经见证你{data.page_1.semester_spent}个学期的大学生活。</div>
   },
   {
     id: 2,
@@ -56,7 +71,7 @@ const papers = [
     ncolor: "#d8c34c",
     color: "rgba(216, 195, 76, .7)",
     end: false,
-    context: <div>星光不负赶路人。<br />高达{data.page_4.page_4_data.credits_taken}的学分<br />没有辜负你。<br />在专业排名前{data.page_4.page_4_data.gpa_rank}%<br />{data.page_4.page_4_data.gpa}平均绩点<br />也在肯定着你的努力</div>
+    context: Boolean(data.page_4.if_grade_19) === true ? <div>在已经公布的期末成绩里,<br />你考的最好的课程有：{data.page_4.page_4_data.top_three_courses.map((item, index)=>(<span key={index}><br />{item.class_name}</span>))}</div> : <div>星光不负赶路人。<br />高达{data.page_4.page_4_data.credits_taken}的学分<br />没有辜负你。<br />在专业排名前{data.page_4.page_4_data.gpa_rank}%<br />{data.page_4.page_4_data.gpa}平均绩点<br />也在肯定着你的努力</div>
   },
   {
     id: 3,
@@ -68,32 +83,7 @@ const papers = [
     ncolor: "#d8c34c",
     color: "rgba(216, 195, 76, .7)",
     end: false,
-    context: <div>不知不觉中,<br />你已经修满了{data.page_4.page_4_data.credits_taken}个学分<br />{data.page_4.page_4_data.gpa}的平均绩点,<br />为你的大学生活,<br />留下了珍贵的足迹。<br />加油！<br />未来的你,<br />一定还有着更好的模样</div>
-  },
-  // 19的
-  {
-    id: 3,
-    name: "成就",
-    bg: "paper3",
-    bgcolor: "rgba(216, 195, 76, .4)",
-    logo: "",
-    puzzle: require('../assets/imgs/cj.png'),
-    ncolor: "#d8c34c",
-    color: "rgba(216, 195, 76, .7)",
-    end: false,
-    context: <div>在已经公布的期末成绩里,<br />你考的最好的课程有:<br />艺术学概论<br />新闻学概论<br />高等数学</div>
-  },
-  {
-    id: 3,
-    name: "成就",
-    bg: "paper3",
-    bgcolor: "rgba(216, 195, 76, .4)",
-    logo: "",
-    puzzle: require('../assets/imgs/cj.png'),
-    ncolor: "#d8c34c",
-    color: "rgba(216, 195, 76, .7)",
-    end: true,
-    context: <div>最高的那门艺术学概论<br />超过了全专业90%的同学<br />不用担心啦,<br />这次期末一定能过</div>
+    context: Boolean(data.page_4.if_grade_19) === true ? <div>最高的那门{data.page_4.page_4_data.top_three_courses[0].class_name}<br />超过了全专业{data.page_4.page_4_data.course_defeat_rank}%的同学<br />不用担心啦,<br />这次期末一定能过</div> : <div>不知不觉中,<br />你已经修满了{data.page_4.page_4_data.credits_taken}个学分<br />{data.page_4.page_4_data.gpa}的平均绩点,<br />为你的大学生活,<br />留下了珍贵的足迹。<br />加油！<br />未来的你,<br />一定还有着更好的模样</div>
   },
   {
     id: 4,
@@ -129,7 +119,7 @@ const papers = [
     ncolor: "#7554a0",
     color: "rgba(117, 84, 160, .7)",
     end: true,
-    context: <div>在潜心专业课的同时,<br />要记得你还选修了<br />自然科学,人文科学<br />二类通识。<br />把还没修的类别<br />记进备忘录吧<br />下次选课 so easy</div>
+    context: <div>在潜心专业课的同时,<br />要记得你还要选修<br />二类通识。<br />把还没修的类别<br />记进备忘录吧<br />下次选课 so easy</div>
   },
   {
     id: 6,
@@ -141,7 +131,7 @@ const papers = [
     ncolor: "#64a1ae",
     color: "rgba(100, 161, 174, .7)",
     end: false,
-    context: <div>朝气蓬勃的生活<br />总是离不开良好的习惯,<br />在南大app里,<br />你参与了早起,背单词<br />其中坚持跑步长达21天</div>
+  context: <div>朝气蓬勃的生活<br />总是离不开良好的习惯,<br />在南大app里,<br />你参与的习惯有{my ? my[0].title : "无"} {my ? my[1].title + "等": ""}<br />{my ? "其中坚持"+my[0].title+"长达"+my[0].check_count+"天" : ""}</div>
   },
   {
     id: 6,
@@ -177,7 +167,7 @@ const papers = [
     ncolor: "#64a1ae",
     color: "rgba(100, 161, 174, .7)",
     end: true,
-    context: <div>而你身边的他们<br />则凭借着惊人的毅力<br />成为了各自习惯圈子里的王者。</div>
+  context: <div>而这些习惯圈子<br />拥有最多的参与者<br />成为了习惯圈子里的王者<br />{other[0].title}: {other[0].count}人 <br />{other[1].title}: {other[1].count}人 <br />{other[2].title}: {other[2].count}人</div>
   },
   // 有一个判断
   {
