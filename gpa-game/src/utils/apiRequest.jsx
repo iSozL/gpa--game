@@ -4,7 +4,7 @@ export default {
     axios.defaults.headers.post['Content-Type'] = 'application/json';
     return new Promise((resolve, reject) => {
       axios({
-        url: 'http://guoxy.top' + url,
+        url: 'https://os.ncuos.com' + url,
         method: methods,
         data: datas,
         params: params

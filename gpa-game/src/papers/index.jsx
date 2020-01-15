@@ -13,6 +13,10 @@ function Paper() {
     document.getElementById("flip").style.visibility = "visible"
     document.getElementById("paper-loading").style.display = "none"
   }
+  setTimeout(() => {
+    document.getElementById("flip").style.visibility = "visible"
+    document.getElementById("paper-loading").style.display = "none"
+  }, 8000);
   return (
     <div>
       <div id="paper-loading"><Loading /></div>

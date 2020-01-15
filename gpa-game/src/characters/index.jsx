@@ -2,7 +2,7 @@ import React from "react"
 import './index.css'
 import Loading from "../components/loading"
 import {Link} from "react-router-dom"
-import Request from "../utils/apiRequest"
+import axios from "axios"
 window.localStorage.clear()
 if(window.location.href.indexOf('#reload')==-1){ //判断是否有刷新标记
   window.location.href=window.location.href+"#reload";//没有添加标记
@@ -18,7 +18,7 @@ class Characters extends React.Component {
     show3: null
   }
   componentWillMount() {
-    Request.fetchData("/api/h5/data", "get", null, {xh: 6109118082}).then(
+    axios.get("https://os.ncuos.com/api/h5/data", { headers: {Authorization: `passport ${localStorage.getItem("token")}`} }).then(
       res => {
         this.setState({
           charData: res.data.data

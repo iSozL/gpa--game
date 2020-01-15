@@ -1,3 +1,4 @@
+  
 import React, {Suspense, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import {
@@ -21,10 +22,8 @@ const Characters = () => {
 }
 const Routers = () => {
   useEffect(()=>{
-    let token = JSON.stringify(Miracle.getData()) !== '{}' ? Miracle.getData().user.token : ""
-    let xh = JSON.stringify(Miracle.getData()) !== '{}' ? Miracle.getData().base_info.xh : ""
+    let token = JSON.stringify(Miracle.getData()) !== '{}' ? Miracle.getData().user.token : "eyJhbGciOiJIUzI1NiIsImlhdCI6MTU3OTA1NzMzMiwiZXhwIjoxNTc5MDYwMzMyfQ.eyJpZCI6Ijk5ODY3Mzg4MTciLCJleHAiOjE1NzkwNjAzMzIsInhoIjoiNjEwOTExODA4MiJ9.izjYyrTIGAyYrDKJw8OANikfsyW8VLNEZVrIyne6rb4"
     localStorage.setItem("token", token)
-    localStorage.setItem("xh", xh)
   })
   return (
     <Router>

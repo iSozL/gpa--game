@@ -2,10 +2,8 @@ import React, { useState, Suspense, useEffect, useContext } from 'react';
 import Loading from "../components/loading"
 import './paper.css'
 import axios from "axios"
-import Request from "../utils/apiRequest"
 import Miracle from "incu-webview"
 import { showContext, UPDATE_SHOW, UPDATE_INDEX } from './show'
-alert(Miracle.getData().base_info_xh)
 const Papers = (props) => {
   const { show, dispatch } = useContext(showContext)
   const [paper, setPaper] = useState([])
@@ -16,7 +14,7 @@ const Papers = (props) => {
     const token = localStorage.getItem("token") ? localStorage.getItem("token") : ""
     if (true) {
       const [papersRes, todoRes, myRes] = await Promise.all([
-        Request.fetchData("/api/h5/data", "get", null, { xh: Number(localStorage.getItem("xh")) }),
+        axios.get("https://os.ncuos.com/api/h5/data", { headers: {Authorization: `passport ${token}`} }),
         axios.get("http://incu-api.ncuos.com/v2/api/todo", { headers: { Authorization: token } }),
         axios.get("http://incu-api.ncuos.com/v2/api/todo/my", { headers: { Authorization: token } })
       ])
@@ -84,7 +82,7 @@ const Papers = (props) => {
           puzzle: require('../assets/imgs/cj.png'),
           ncolor: "#d8c34c",
           color: "rgba(216, 195, 76, .7)",
-          end: false,
+          end: true,
           context: Boolean(data.page_4.if_grade_19) === true ? <div>最高的那门{data.page_4.page_4_data.top_three_courses[0].class_name}<br />超过了全专业{data.page_4.page_4_data.course_defeat_rank}%的同学<br />不用担心啦,<br />这次期末一定能过</div> : <div>不知不觉中,<br />你已经修满了{data.page_4.page_4_data.credits_taken}个学分<br />{data.page_4.page_4_data.gpa}的平均绩点,<br />为你的大学生活,<br />留下了珍贵的足迹。<br />加油！<br />未来的你,<br />一定还有着更好的模样</div>
         },
         {
