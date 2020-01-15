@@ -116,7 +116,7 @@ const Show = (props) => {
       ncolor: "#64a1ae",
       color: "rgba(100, 161, 174, .7)",
       end: false,
-    context: <div>朝气蓬勃的生活<br />总是离不开良好的习惯<br />在南大app里<br />你参与的习惯有{my.length > 0 ? my[0].title : "无"} {my.length > 1 ? my[1].title + "等": ""}<br />{my.length > 0? "其中坚持"+my[0].title+"长达"+my[0].check_count+"天" : ""}</div>
+    context: <div>朝气蓬勃的生活<br />总是离不开良好的习惯<br />在南大app里<br />{my.length > 0 ? '你参与的习惯有' + my[0].title : "你没有参与习惯"} {my.length > 1 ? my[1].title + "等": ""}<br />{my.length > 0? "其中坚持"+my[0].title+"长达"+my[0].check_count+"天" : ""}</div>
     },
     {
       id: 6,
@@ -165,7 +165,7 @@ const Show = (props) => {
       ncolor: "#cb8b41",
       color: "rgba(203, 139, 65, .7)",
       end: true,
-      context: <div>本学期<br />你们寝室的<br />月平均用电量为{data.page_7.elec_expense ? data.page_7.elec_expense : "没找到哦"}度<br />在本校<br />月平均用电量100度以上的<br />爱用电寝室<br />生活一定不会太单调</div>
+      context: <div>本学期<br />你们寝室的<br />月平均用电量为{data.page_7.elec_expense ? data.page_7.elec_expense : "没找到哦"}度<br />{data.page_7.elec_expense > 100?"在本校月平均用电量100度以上的爱用电寝室,生活一定不会太单调":"用电理性的你们,一定很擅长生活"}</div>
     },
     {
       id: 8,
