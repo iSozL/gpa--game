@@ -5,7 +5,7 @@ import axios from "axios"
 import Request from "../utils/apiRequest"
 import Miracle from "incu-webview"
 import { showContext, UPDATE_SHOW, UPDATE_INDEX } from './show'
-// import papers from '../utils/data'
+alert(Miracle.getData().base_info_xh)
 const Papers = (props) => {
   const { show, dispatch } = useContext(showContext)
   const [paper, setPaper] = useState([])
@@ -16,7 +16,7 @@ const Papers = (props) => {
     const token = localStorage.getItem("token") ? localStorage.getItem("token") : ""
     if (true) {
       const [papersRes, todoRes, myRes] = await Promise.all([
-        Request.fetchData("/api/h5/data", "get", null, { xh: 6109119082 }),
+        Request.fetchData("/api/h5/data", "get", null, { xh: Number(localStorage.getItem("xh")) }),
         axios.get("http://incu-api.ncuos.com/v2/api/todo", { headers: { Authorization: token } }),
         axios.get("http://incu-api.ncuos.com/v2/api/todo/my", { headers: { Authorization: token } })
       ])
