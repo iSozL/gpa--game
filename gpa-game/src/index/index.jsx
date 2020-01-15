@@ -4,14 +4,6 @@ import Loading from "../components/loading"
 import {Link} from 'react-router-dom'
 import Miracle from 'incu-webview'
 const Index = () => {
-  // const [test, setTest] = useState(null)
-  // useEffect(() => {
-  //   const onAppReady = Miracle.onAppReady(() => {
-  //     console.log(Miracle.getData())
-  //   })
-  //   setTest(onAppReady)
-  //   console.log(onAppReady, test)
-  // })
   const [flag, setFlag] = useState(true)
   const [show, changeShow] = useState(false)
   const onBottom = () => {
@@ -55,7 +47,7 @@ const Index = () => {
     <div>
       <div id="loading"><Loading /></div>
       <div id="container" className="index-container" onClick={onBottom}>
-        <div className="index-title">2019<span className="index-flag">生成的你的年度#TAG#</span></div>
+        <div className="index-title">2019<span className="index-flag">生成你的年度#TAG#</span><div style={{fontSize: "6vw"}}>(任意点击进入扭蛋机)</div></div>
         <div className="index-words">
           <div id="sentence1">
             你即将看到的是<span style={{ fontSize: "6.5vw" }}>家园扭蛋机</span>

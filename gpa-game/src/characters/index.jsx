@@ -3,7 +3,7 @@ import './index.css'
 import Loading from "../components/loading"
 import {Link} from "react-router-dom"
 import axios from "axios"
-window.localStorage.clear()
+import Miracle from "incu-webview"
 if(window.location.href.indexOf('#reload')==-1){ //判断是否有刷新标记
   window.location.href=window.location.href+"#reload";//没有添加标记
   window.location.reload();//刷新
@@ -18,68 +18,129 @@ class Characters extends React.Component {
     show3: null
   }
   componentWillMount() {
+    if (localStorage.getItem("papers") !== null) {
+      let data = JSON.parse(localStorage.getItem("papers"))
+      if(data.page_4.page_4_data.gpa_rank !== null) {
+        if(data.page_4.page_4_data.gpa_rank <= 5) {
+          this.setState({
+            show1: require("../assets/imgs/yhwz.png")
+          })
+        } else if (data.page_4.page_4_data.gpa_rank <= 30 && data.page_4.page_4_data.gpa_rank > 5) {
+          this.setState({
+            show1: require("../assets/imgs/xxds.png")
+          })
+        } else {
+          this.setState({
+            show1: require("../assets/imgs/fxlz.png")
+          })
+        }
+      }
+      // 课时排名
+      if(data.page_3.course_hours_defeat !== null) {
+        if(data.page_3.course_hours_defeat > 50) {
+          this.setState({
+            show: require("../assets/imgs/tfswz.png")
+          })
+        } else {
+          this.setState({
+            show: require("../assets/imgs/ylqn.png")
+          })
+        }
+      }
+      // 生活费
+      if(data.page_7.elec_expense !== null) {
+        if(data.page_7.elec_expense > 202) {
+          this.setState({
+            show3: require("../assets/imgs/shfss.png")
+          })
+        } else {
+          this.setState({
+            show3: require("../assets/imgs/xts.png")
+          })
+        }
+      }
+      if(data.page_1.join_year !== null) {
+        if(data.page_1.join_year == 2019) {
+          this.setState({
+            show2: require("../assets/imgs/tjhdxs.png")
+          })
+        } else if (data.page_1.join_year == 2018) {
+          this.setState({
+            show2: require("../assets/imgs/ygjzqn.png")
+          })
+        } else {
+          this.setState({
+            show2: require("../assets/imgs/ndssyq.png")
+          })
+        }
+      }
+    }
     axios.get("https://os.ncuos.com/api/h5/data", { headers: {Authorization: `passport ${localStorage.getItem("token")}`} }).then(
       res => {
-        this.setState({
-          charData: res.data.data
-        })
-        if(this.state.charData !== null) {
-          const data = this.state.charData
-          // 绩点
-          if(data.page_4.page_4_data.gpa_rank) {
-            if(data.page_4.page_4_data.gpa_rank <= 5) {
-              this.setState({
-                show1: require("../assets/imgs/yhwz.png")
-              })
-            } else if (data.page_4.page_4_data.gpa_rank <= 30 && data.page_4.page_4_data.gpa_rank > 5) {
-              this.setState({
-                show1: require("../assets/imgs/xxds.png")
-              })
-            } else {
-              this.setState({
-                show1: require("../assets/imgs/fxlz.png")
-              })
+        if(res.data.status == 0) {
+          this.setState({
+            charData: res.data.data
+          })
+          if(this.state.charData !== null) {
+            const data = this.state.charData
+            // 绩点
+            if(data.page_4.page_4_data.gpa_rank) {
+              if(data.page_4.page_4_data.gpa_rank <= 5) {
+                this.setState({
+                  show1: require("../assets/imgs/yhwz.png")
+                })
+              } else if (data.page_4.page_4_data.gpa_rank <= 30 && data.page_4.page_4_data.gpa_rank > 5) {
+                this.setState({
+                  show1: require("../assets/imgs/xxds.png")
+                })
+              } else {
+                this.setState({
+                  show1: require("../assets/imgs/fxlz.png")
+                })
+              }
+            }
+            // 课时排名
+            if(data.page_3.course_hours_defeat) {
+              if(data.page_3.course_hours_defeat > 50) {
+                this.setState({
+                  show: require("../assets/imgs/tfswz.png")
+                })
+              } else {
+                this.setState({
+                  show: require("../assets/imgs/ylqn.png")
+                })
+              }
+            }
+            // 生活费
+            if(data.page_7.elec_expense) {
+              if(data.page_7.elec_expense > 202) {
+                this.setState({
+                  show3: require("../assets/imgs/shfss.png")
+                })
+              } else {
+                this.setState({
+                  show3: require("../assets/imgs/xts.png")
+                })
+              }
+            }
+            if(data.page_1.join_year) {
+              if(data.page_1.join_year == 2019) {
+                this.setState({
+                  show2: require("../assets/imgs/tjhdxs.png")
+                })
+              } else if (data.page_1.join_year == 2018) {
+                this.setState({
+                  show2: require("../assets/imgs/ygjzqn.png")
+                })
+              } else {
+                this.setState({
+                  show2: require("../assets/imgs/ndssyq.png")
+                })
+              }
             }
           }
-          // 课时排名
-          if(data.page_3.course_hours_defeat) {
-            if(data.page_3.course_hours_defeat > 50) {
-              this.setState({
-                show: require("../assets/imgs/tfswz.png")
-              })
-            } else {
-              this.setState({
-                show: require("../assets/imgs/ylqn.png")
-              })
-            }
-          }
-          // 生活费
-          if(data.page_7.elec_expense) {
-            if(data.page_7.elec_expense > 202) {
-              this.setState({
-                show3: require("../assets/imgs/shfss.png")
-              })
-            } else {
-              this.setState({
-                show3: require("../assets/imgs/xts.png")
-              })
-            }
-          }
-          if(data.page_1.join_year) {
-            if(data.page_1.join_year == 2019) {
-              this.setState({
-                show2: require("../assets/imgs/tjhdxs.png")
-              })
-            } else if (data.page_1.join_year == 2018) {
-              this.setState({
-                show2: require("../assets/imgs/ygjzqn.png")
-              })
-            } else {
-              this.setState({
-                show2: require("../assets/imgs/ndssyq.png")
-              })
-            }
-          }
+        } else {
+          alert(res.data.message)
         }
       }
     )

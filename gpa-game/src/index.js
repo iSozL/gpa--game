@@ -22,7 +22,7 @@ const Characters = () => {
 }
 const Routers = () => {
   useEffect(()=>{
-    let token = JSON.stringify(Miracle.getData()) !== '{}' ? Miracle.getData().user.token : "eyJhbGciOiJIUzI1NiIsImlhdCI6MTU3OTA1NzMzMiwiZXhwIjoxNTc5MDYwMzMyfQ.eyJpZCI6Ijk5ODY3Mzg4MTciLCJleHAiOjE1NzkwNjAzMzIsInhoIjoiNjEwOTExODA4MiJ9.izjYyrTIGAyYrDKJw8OANikfsyW8VLNEZVrIyne6rb4"
+    let token = JSON.stringify(Miracle.getData()) !== '{}' ? Miracle.getData().user.token : ""
     localStorage.setItem("token", token)
   })
   return (
