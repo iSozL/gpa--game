@@ -198,8 +198,36 @@ body {
   height: 35vw;
   bottom: 18vh;
   right: 20vw;
+  border-radius: 50%;
+  /* box-shadow: 0 0 20px 20px rgba(255, 255, 255, .6) inset; */
+  animation:button 2s infinite;
+	-webkit-animation:button 2s infinite;
 }
 .puzzle-bg {
   width: 100vw;
   height: 100vh;
+}
+@keyframes button
+{
+	0% {
+    box-shadow: 0 0 20px 20px rgba(255, 255, 255, .6) inset;
+  }
+  50% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 0 0 20px 20px rgba(255, 255, 255, .6) inset;
+  }
+}
+
+@-webkit-keyframes button {
+  0% {
+    box-shadow: 0 0 20px 20px rgba(255, 255, 255, .6) inset;
+  }
+  50% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 0 0 20px 20px rgba(255, 255, 255, .6) inset;
+  }
 }

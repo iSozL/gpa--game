@@ -246,7 +246,9 @@ const Papers = (props) => {
     return (
       <div className="flip" id="flip">
         <div className="paper-before" id="paper-before">
-          <div className="click" onClick={() => { dispatch({ type: UPDATE_SHOW, show: { show: true, index: show.index } }); start() }}></div>
+          <div className="click" onClick={() => { dispatch({ type: UPDATE_SHOW, show: { show: true, index: show.index } }); start() }}>
+            
+          </div>
           {show.index > 0 ? <img id="before" className="sway" src={require("../assets/imgs/yaozhui.png")} onClick={flip}></img> : ""}
         </div>
         <div className="puzzle-after" id="unflip">

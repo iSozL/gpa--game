@@ -7,7 +7,6 @@ const Show = (props) => {
   let index = show.index
   const data = JSON.parse(localStorage.getItem("papers"))
   const my = JSON.parse(localStorage.getItem("my"))
-  console.log(my === null)
   const other = JSON.parse(localStorage.getItem("other"))
   const papers = [
     {
@@ -165,7 +164,7 @@ const Show = (props) => {
       ncolor: "#cb8b41",
       color: "rgba(203, 139, 65, .7)",
       end: true,
-      context: <div>本学期<br />你们寝室的<br />月平均用电量为{data.page_7.elec_expense ? data.page_7.elec_expense : "没找到哦"}度<br />{data.page_7.elec_expense > 100?"在本校月平均用电量100度以上的爱用电寝室,生活一定不会太单调":"用电理性的你们,一定很擅长生活"}</div>
+    context: <div>本学期<br />你们寝室的<br />月平均用电量为{data.page_7.elec_expense ? data.page_7.elec_expense : "没找到哦"}度<br />{data.page_7.elec_expense > 200 ? <div>爱用电的寝室,生活一定不会太单调</div>:data.page_7.elec_expense < 35 ?<div>用电理性的你们,一定很擅长生活</div>:<div>恭喜获得"南大用电标准寝室"称号</div>}</div>
     },
     {
       id: 8,
@@ -177,7 +176,7 @@ const Show = (props) => {
       ncolor: "#a9a9a9",
       color: "rgba(169,169,169, .7)",
       end: false,
-      context: <div>最大的遗憾<br />大概就是<br />捡到你东西的人没法联系你<br />不过还好<br />这学期已有7836人<br />通过失物招领功能<br />寻回了自己的失物</div>
+      context: <div>最大的遗憾<br />大概就是<br />捡到你东西的人没法联系你<br />不过还好<br />这学期已有1077人<br />通过失物招领功能<br />寻回了自己的失物</div>
     },
     {
       id: 8,
@@ -189,7 +188,7 @@ const Show = (props) => {
       ncolor: "#a9a9a9",
       color: "rgba(169,169,169, .7)",
       end: true,
-      context: <div>我们因此少了7836次遗憾<br />也愿更多的爱心<br />在这里传递下去</div>
+      context: <div>我们因此少了1077次遗憾<br />也愿更多的爱心<br />在这里传递下去</div>
     }
   ]
   const start1 = () => {
