@@ -1,7 +1,8 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect,Suspense} from 'react'
 import './paper.css'
 import papers from '../utils/data'
 import {showContext, UPDATE_SHOW, UPDATE_INDEX} from './show'
+import Loading from "../components/loading"
 const Show = (props) => {
   const {show, dispatch} = useContext(showContext)
   let index = show.index
@@ -164,7 +165,7 @@ const Show = (props) => {
       ncolor: "#cb8b41",
       color: "rgba(203, 139, 65, .7)",
       end: true,
-    context: <div>本学期<br />你们寝室的<br />月平均用电量为{data.page_7.elec_expense ? data.page_7.elec_expense : "没找到哦"}度<br />{data.page_7.elec_expense > 200 ? <div>爱用电的寝室,生活一定不会太单调</div>:data.page_7.elec_expense < 35 ?<div>用电理性的你们,一定很擅长生活</div>:<div>恭喜获得"南大用电标准寝室"称号</div>}</div>
+    context: <div>本学期<br />你们寝室的<br />月平均用电量为{data.page_7.elec_expense ? data.page_7.elec_expense : "没找到哦"}度<br />{data.page_7.elec_expense > 200 ? <div>爱用电的寝室,生活一定不会太单调</div>:data.page_7.elec_expense < 35 ?<div>用电理性的你们,一定很擅长生活</div>:<div>恭喜获得<br />"南大用电标准寝室"称号</div>}</div>
     },
     {
       id: 8,
@@ -202,23 +203,91 @@ const Show = (props) => {
       document.getElementById('puzzle').style.visibility = 'visible'
     }, 0);
   }
+  useEffect(()=>{
+    if(show.play) {
+      // if (document.getElementById('paper-container').complete) {
+      //   document.getElementById("test-loading").style.visibility = "hidden"
+      //   document.getElementById("paper-show").style.visibility = "visible"
+      //   setTimeout(() => {
+      //     // document.getElementById('paper-container').src = "http://q43qyx1kc.bkt.clouddn.com/paperbg.jpg"+.
+      //     document.getElementById('paper-container').style.filter = 'blur(5px)'
+      //     document.getElementById('paper-container').style.mozFilter = 'blur(5px)'
+      //     document.getElementById('paper-container').style.msFilter = 'blur(5px)'
+      //     document.getElementById('paper-container').style.webkitFilter = 'blur(5px)'
+      //     document.getElementById('paper-container').style.oFilter = 'blur(5px)'
+      //     document.getElementById('paper-bg').style.visibility = 'visible'
+      //     document.getElementById('puzzle').style.visibility = 'visible'
+      // }, 4000);
+      // }
+      var timer = setInterval(function(){
+        if (document.getElementById('paper-container').complete){
+          // console.log(show.play)
+          clearInterval(timer);
+          document.getElementById("test-loading").style.visibility = "hidden"
+          document.getElementById("paper-show").style.visibility = "visible"
+          document.getElementById("paper-container").src = document.getElementById("paper-container").src
+          setTimeout(() => {
+            // document.getElementById('paper-container').src = "http://q43qyx1kc.bkt.clouddn.com/paperbg.jpg"
+            document.getElementById('paper-container').style.filter = 'blur(5px)'
+            document.getElementById('paper-container').style.mozFilter = 'blur(5px)'
+            document.getElementById('paper-container').style.msFilter = 'blur(5px)'
+            document.getElementById('paper-container').style.webkitFilter = 'blur(5px)'
+            document.getElementById('paper-container').style.oFilter = 'blur(5px)'
+            document.getElementById('paper-bg').style.visibility = 'visible'
+            document.getElementById('puzzle').style.visibility = 'visible'
+        }, 4000);
+        }
+      }, 10);
+    } else {
+      var timer1 = setInterval(function(){
+        if (document.getElementById('paper-container')){
+          clearInterval(timer1);
+          document.getElementById("test-loading").style.visibility = "hidden"
+          document.getElementById("paper-show").style.visibility = "visible"
+          document.getElementById("paper-container").src="http://q43qyx1kc.bkt.clouddn.com/paperbg.jpg"
+        }
+      }, 10);
+    }
+  }, [])
+  console.log(show.play)
+  // var timer = setInterval(function(){
+  //   if (document.getElementById('paper-container').complete){
+  //     // console.log(show.play)
+  //     clearInterval(timer);
+  //     document.getElementById("test-loading").style.visibility = "hidden"
+  //     document.getElementById("paper-show").style.visibility = "visible"
+  //     setTimeout(() => {
+  //       // document.getElementById('paper-container').src = "http://q43qyx1kc.bkt.clouddn.com/paperbg.jpg"+.
+  //       document.getElementById('paper-container').style.filter = 'blur(5px)'
+  //       document.getElementById('paper-container').style.mozFilter = 'blur(5px)'
+  //       document.getElementById('paper-container').style.msFilter = 'blur(5px)'
+  //       document.getElementById('paper-container').style.webkitFilter = 'blur(5px)'
+  //       document.getElementById('paper-container').style.oFilter = 'blur(5px)'
+  //       document.getElementById('paper-bg').style.visibility = 'visible'
+  //       document.getElementById('puzzle').style.visibility = 'visible'
+  //   }, 4000);
+  //   }
+  // }, 10);
   return (
-    <div id="paper-show">
-      <img id="puzzle" src={papers[index].puzzle} className="puzzle"></img>
-      <div style={{display: "flex", justifyContent: "center", alignItems: "center"}} onClick={papers[index].end ? () =>{dispatch({ type: UPDATE_INDEX, show: { index: show.index+1, show: false }})} : () => {dispatch({ type: UPDATE_INDEX, show: { index: show.index+1, show: show.show }});start1()}}>
-      <img src="http://q43qyx1kc.bkt.clouddn.com/nd.gif" className="paper-container" id="paper-container"></img>
-      <div className={papers[index].bg} id="paper-bg">
-        <div key={index}>
-          <div className="paper-name" style={{color: papers[index].ncolor}}>
-            <span style={{background: papers[index].bgcolor}}>{papers[index].name}</span>
-          </div>
-          <div>{ 
-            papers[index].logo ? 
-            <img className="logo" src={papers[index].logo} /> : 
-            <div style={{marginTop: "6vh"}}></div>
-            }
-          </div>
-          <div className="context" style={{color: papers[index].color}}>{papers[index].context}</div>
+    <div>
+      <div id="test-loading"><Loading /></div>
+      <div id="paper-show" style={{visibility: "hidden"}}>
+        <img id="puzzle" src={papers[index].puzzle} className="puzzle"></img>
+        <div style={{display: "flex", justifyContent: "center", alignItems: "center"}} onClick={papers[index].end ? () =>{dispatch({ type: UPDATE_INDEX, show: { index: show.index+1, show: false, play: show.play }})} : () => {dispatch({ type: UPDATE_INDEX, show: { index: show.index+1, show: show.show , play: false}});start1()}}>
+        <img src="http://q43qyx1kc.bkt.clouddn.com/nd.gif" className="paper-container" id="paper-container"></img>
+        <div className={papers[index].bg} id="paper-bg">
+          <div key={index}>
+            <div className="paper-name" style={{color: papers[index].ncolor}}>
+              <span style={{background: papers[index].bgcolor}}>{papers[index].name}</span>
+            </div>
+            <div>{ 
+              papers[index].logo ? 
+              <img className="logo" src={papers[index].logo} /> : 
+              <div style={{marginTop: "6vh"}}></div>
+              }
+            </div>
+            <div className="context" style={{color: papers[index].color}}>{papers[index].context}</div>
+            </div>
           </div>
         </div>
       </div>

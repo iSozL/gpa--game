@@ -2,7 +2,6 @@ import React, { useState, Suspense, useEffect, useContext } from 'react';
 import Loading from "../components/loading"
 import './paper.css'
 import axios from "axios"
-import Miracle from "incu-webview"
 import { showContext, UPDATE_SHOW, UPDATE_INDEX } from './show'
 const Papers = (props) => {
   const { show, dispatch } = useContext(showContext)
@@ -214,23 +213,6 @@ const Papers = (props) => {
   if (show.index > 14) {
     window.location.hash = "/characters"
   }
-  const start = () => {
-    setTimeout(() => {
-      if(document.getElementById("paper-container").src !== null) {
-        document.getElementById("paper-container").src = document.getElementById("paper-container").src
-      }
-    }, 100)
-    // 显示gif图后4s模糊背景，显示纸条
-    setTimeout(() => {
-      document.getElementById('paper-container').style.filter = 'blur(5px)'
-      document.getElementById('paper-container').style.mozFilter = 'blur(5px)'
-      document.getElementById('paper-container').style.msFilter = 'blur(5px)'
-      document.getElementById('paper-container').style.webkitFilter = 'blur(5px)'
-      document.getElementById('paper-container').style.oFilter = 'blur(5px)'
-      document.getElementById('paper-bg').style.visibility = 'visible'
-      document.getElementById('puzzle').style.visibility = 'visible'
-    }, 4000);
-  }
   const flip = () => {
     document.getElementById("unflip").style.visibility = "visible"
     document.getElementById('flip').style.transform = 'rotateX(180deg)'
@@ -246,8 +228,7 @@ const Papers = (props) => {
     return (
       <div className="flip" id="flip">
         <div className="paper-before" id="paper-before">
-          <div className="click" onClick={() => { dispatch({ type: UPDATE_SHOW, show: { show: true, index: show.index } }); start() }}>
-            
+          <div className="click" onClick={() => { dispatch({ type: UPDATE_SHOW, show: { show: true, index: show.index, play: true } }); }}>
           </div>
           {show.index > 0 ? <img id="before" className="sway" src={require("../assets/imgs/yaozhui.png")} onClick={flip}></img> : ""}
         </div>
@@ -261,9 +242,11 @@ const Papers = (props) => {
     )
   }
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
-      {Boolean(show.show) ? <Suspense fallback={<Loading />}><Test /></Suspense> : <Before />}
-    </div>
+    <Suspense fallback={<Loading />}>
+      <div style={{ width: "100vw", height: "100vh" }}>
+        {Boolean(show.show) ? <Test /> : <Before />}
+      </div>
+    </Suspense>
   )
 }
 export default Papers

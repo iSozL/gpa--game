@@ -22,7 +22,7 @@ const reducer = (state, action) => {
  * Color 组件包裹的所有组件都可以访问到 value
  */
 export const Show = props => {
-  const [show, dispatch] = useReducer(reducer, {index: 0, show: false});
+  const [show, dispatch] = useReducer(reducer, {index: 0, show: false, play: true});
   return (
     <showContext.Provider value={{ show, dispatch }}>
       {props.children}

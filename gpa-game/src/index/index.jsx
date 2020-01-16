@@ -3,6 +3,7 @@ import './index.css'
 import Loading from "../components/loading"
 import {Link} from 'react-router-dom'
 import Miracle from 'incu-webview'
+import Loadable from "react-loadable"
 const Index = () => {
   const [flag, setFlag] = useState(true)
   const [show, changeShow] = useState(false)
@@ -17,7 +18,12 @@ const Index = () => {
     document.getElementById("container").style.visibility = "visible"
     document.getElementById("loading").style.display = "none"
   });
+  const Papers = Loadable({
+    loader: () => import('../papers/index'),
+    loading: Loading
+  })
   const showWords = (count) => {
+    Papers.preload()
     setFlag(false)
     if (count < 3) {
       let num = count
