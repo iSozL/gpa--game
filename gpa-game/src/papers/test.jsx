@@ -92,7 +92,7 @@ const Show = (props) => {
       ncolor: "#ecb3b5",
       color: "rgba(236, 179, 181, .7)",
       end: true,
-      context: <div>在那儿<br />{data.page_2.first_class_teacher!==null ? data.page_2.first_class_teacher : "没找到哦"}老师与你初见<br />也许在毕业季,<br />你还会想重温那天那节<br />{data.page_2.first_class_name !==null? data.page_2.first_class_name : "没找到哦"}</div>
+      context: <div>在那儿<br />{data.page_2.first_class_teacher!==null ? data.page_2.first_class_teacher : "没找到哦"}老师与你初见<br />也许在毕业季<br />你还会想重温那天那节<br />{data.page_2.first_class_name !==null? data.page_2.first_class_name : "没找到哦"}</div>
     },
     {
       id: 5,
@@ -140,7 +140,7 @@ const Show = (props) => {
       ncolor: "#64a1ae",
       color: "rgba(100, 161, 174, .7)",
       end: false,
-      context: <div>在南大app里<br />有着这样一群人<br />每天互相鼓劲<br />在习惯圈子里坚持打卡<br />其中不乏如读书,早睡<br />这样有趣的习惯</div>
+      context: <div>在南大家园app里<br />有着这样一群人<br />每天互相鼓劲<br />在习惯圈子里坚持打卡<br />其中不乏如读书,早睡<br />这样有趣的习惯</div>
     },
     {
       id: 6,
@@ -203,8 +203,8 @@ const Show = (props) => {
       document.getElementById('puzzle').style.visibility = 'visible'
     }, 0);
   }
-  useEffect(()=>{
-    if(show.play) {
+  // useEffect(()=>{
+  //   if(show.play) {
       // if (document.getElementById('paper-container').complete) {
       //   document.getElementById("test-loading").style.visibility = "hidden"
       //   document.getElementById("paper-show").style.visibility = "visible"
@@ -219,43 +219,43 @@ const Show = (props) => {
       //     document.getElementById('puzzle').style.visibility = 'visible'
       // }, 4000);
       // }
-      var timer = setInterval(function(){
-        if (document.getElementById('paper-container').complete){
-          // console.log(show.play)
-          clearInterval(timer);
-          document.getElementById("test-loading").style.visibility = "hidden"
-          document.getElementById("paper-show").style.visibility = "visible"
-          document.getElementById("paper-container").src = document.getElementById("paper-container").src
-          setTimeout(() => {
-            // document.getElementById('paper-container').src = "http://q43qyx1kc.bkt.clouddn.com/paperbg.jpg"
-            document.getElementById('paper-container').style.filter = 'blur(5px)'
-            document.getElementById('paper-container').style.mozFilter = 'blur(5px)'
-            document.getElementById('paper-container').style.msFilter = 'blur(5px)'
-            document.getElementById('paper-container').style.webkitFilter = 'blur(5px)'
-            document.getElementById('paper-container').style.oFilter = 'blur(5px)'
-            document.getElementById('paper-bg').style.visibility = 'visible'
-            document.getElementById('puzzle').style.visibility = 'visible'
-        }, 4000);
-        }
-      }, 10);
-    } else {
-      var timer1 = setInterval(function(){
-        if (document.getElementById('paper-container')){
-          clearInterval(timer1);
-          document.getElementById("test-loading").style.visibility = "hidden"
-          document.getElementById("paper-show").style.visibility = "visible"
-          document.getElementById("paper-container").src="http://q43qyx1kc.bkt.clouddn.com/paperbg.jpg"
-        }
-      }, 10);
-    }
-  }, [])
-  console.log(show.play)
+      // var timer = setInterval(function(){
+      //   if (document.getElementById('paper-container').complete){
+      //     // console.log(show.play)
+      //     clearInterval(timer);
+      //     document.getElementById("test-loading").style.visibility = "hidden"
+      //     document.getElementById("paper-show").style.visibility = "visible"
+      //     document.getElementById("paper-container").src = document.getElementById("paper-container").src
+      //     setTimeout(() => {
+      //       // document.getElementById('paper-container').src = "http://q43qyx1kc.bkt.clouddn.com/paperbg.jpg"
+      //       document.getElementById('paper-container').style.filter = 'blur(5px)'
+      //       document.getElementById('paper-container').style.mozFilter = 'blur(5px)'
+      //       document.getElementById('paper-container').style.msFilter = 'blur(5px)'
+      //       document.getElementById('paper-container').style.webkitFilter = 'blur(5px)'
+      //       document.getElementById('paper-container').style.oFilter = 'blur(5px)'
+      //       document.getElementById('paper-bg').style.visibility = 'visible'
+      //       document.getElementById('puzzle').style.visibility = 'visible'
+      //   }, 4000);
+      //   }
+      // }, 10);
+    // } else {
+    //   var timer1 = setInterval(function(){
+    //     if (document.getElementById('paper-container')){
+    //       clearInterval(timer1);
+    //       document.getElementById("test-loading").style.visibility = "hidden"
+    //       document.getElementById("paper-show").style.visibility = "visible"
+    //       document.getElementById("paper-container").src="http://q43qyx1kc.bkt.clouddn.com/paperbg.jpg"
+    //     }
+    //   }, 10);
+  //   }
+  // }, [])
   // var timer = setInterval(function(){
   //   if (document.getElementById('paper-container').complete){
   //     // console.log(show.play)
   //     clearInterval(timer);
   //     document.getElementById("test-loading").style.visibility = "hidden"
   //     document.getElementById("paper-show").style.visibility = "visible"
+  //     document.getElementById("paper-container").src = document.getElementById("paper-container").src
   //     setTimeout(() => {
   //       // document.getElementById('paper-container').src = "http://q43qyx1kc.bkt.clouddn.com/paperbg.jpg"+.
   //       document.getElementById('paper-container').style.filter = 'blur(5px)'
@@ -268,6 +268,66 @@ const Show = (props) => {
   //   }, 4000);
   //   }
   // }, 10);
+  // console.log(show.play)
+  if(show.play) {
+    var timer = setInterval(function(){
+      if (document.getElementById('paper-container').complete){
+        // console.log(show.play)
+        clearInterval(timer);
+        document.getElementById("test-loading").style.visibility = "hidden"
+        document.getElementById("paper-show").style.visibility = "visible"
+        document.getElementById("paper-container").src = document.getElementById("paper-container").src
+        setTimeout(() => {
+          // document.getElementById('paper-container').src = "http://q43qyx1kc.bkt.clouddn.com/paperbg.jpg"+.
+          document.getElementById('paper-container').style.filter = 'blur(5px)'
+          document.getElementById('paper-container').style.mozFilter = 'blur(5px)'
+          document.getElementById('paper-container').style.msFilter = 'blur(5px)'
+          document.getElementById('paper-container').style.webkitFilter = 'blur(5px)'
+          document.getElementById('paper-container').style.oFilter = 'blur(5px)'
+          document.getElementById('paper-bg').style.visibility = 'visible'
+          document.getElementById('puzzle').style.visibility = 'visible'
+      }, 4000);
+      }
+    }, 10);
+  } else {
+    if (document.getElementById('paper-container')){
+      var u = navigator.userAgent;
+      if (u.indexOf('iPhone') > -1) {
+        var timer1 = setInterval(function(){
+          clearInterval(timer1);
+          document.getElementById("test-loading").style.visibility = "hidden"
+          document.getElementById("paper-show").style.visibility = "visible"
+          // document.getElementById("paper-container").src="http://q43qyx1kc.bkt.clouddn.com/paperbg.jpg"
+        }, 10);
+        console.log("苹果")
+      } else {
+        var timer1 = setInterval(function(){
+        clearInterval(timer1);
+        document.getElementById("test-loading").style.visibility = "hidden"
+        document.getElementById("paper-show").style.visibility = "visible"
+        document.getElementById("paper-container").src="http://q43qyx1kc.bkt.clouddn.com/paperbg.jpg"
+      }, 10);
+    }
+  } else {
+    var u = navigator.userAgent;
+      if (u.indexOf('iPhone') > -1) {
+        var timer1 = setInterval(function(){
+          clearInterval(timer1);
+          document.getElementById("test-loading").style.visibility = "hidden"
+          document.getElementById("paper-show").style.visibility = "visible"
+          // document.getElementById("paper-container").src="http://q43qyx1kc.bkt.clouddn.com/paperbg.jpg"
+        }, 10);
+        console.log("苹果")
+      } else {
+        var timer1 = setInterval(function(){
+        clearInterval(timer1);
+        document.getElementById("test-loading").style.visibility = "hidden"
+        document.getElementById("paper-show").style.visibility = "visible"
+        document.getElementById("paper-container").src="http://q43qyx1kc.bkt.clouddn.com/paperbg.jpg"
+      }, 10);
+    }
+  }
+}
   return (
     <div>
       <div id="test-loading"><Loading /></div>

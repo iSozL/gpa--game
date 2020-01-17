@@ -46,7 +46,7 @@ const Index = () => {
           changeShow(true)
         }
         showWords(num + 1)
-      }, 5000)
+      }, 3000)
     }
   }
   return (

@@ -19,15 +19,15 @@ class Characters extends React.Component {
       if(data.page_4.page_4_data.gpa_rank !== null) {
         if(data.page_4.page_4_data.gpa_rank <= 5) {
           this.setState({
-            show1: require("../assets/imgs/yhwz.png")
+            show1: require("../assets/imgs/xffn.png")
           })
         } else if (data.page_4.page_4_data.gpa_rank <= 30 && data.page_4.page_4_data.gpa_rank > 5) {
           this.setState({
-            show1: require("../assets/imgs/xxds.png")
+            show1: require("../assets/imgs/jjlr.png")
           })
         } else {
           this.setState({
-            show1: require("../assets/imgs/fxlz.png")
+            show1: require("../assets/imgs/xysr.png")
           })
         }
       }
@@ -35,11 +35,11 @@ class Characters extends React.Component {
       if(data.page_3.course_hours_defeat !== null) {
         if(data.page_3.course_hours_defeat > 50) {
           this.setState({
-            show: require("../assets/imgs/tfswz.png")
+            show: require("../assets/imgs/bsxxj.png")
           })
         } else {
           this.setState({
-            show: require("../assets/imgs/ylqn.png")
+            show: require("../assets/imgs/lnqn.png")
           })
         }
       }
@@ -47,11 +47,11 @@ class Characters extends React.Component {
       if(data.page_7.elec_expense !== null) {
         if(data.page_7.elec_expense > 202) {
           this.setState({
-            show3: require("../assets/imgs/shfss.png")
+            show3: require("../assets/imgs/gdqbydx.png")
           })
         } else {
           this.setState({
-            show3: require("../assets/imgs/xts.png")
+            show3: require("../assets/imgs/dlbhxh.png")
           })
         }
       }
@@ -62,7 +62,7 @@ class Characters extends React.Component {
           })
         } else if (data.page_1.join_year == 2018) {
           this.setState({
-            show2: require("../assets/imgs/ygjzqn.png")
+            show2: require("../assets/imgs/ygkbqn.png")
           })
         } else {
           this.setState({
@@ -77,63 +77,61 @@ class Characters extends React.Component {
           this.setState({
             charData: res.data.data
           })
-          if(this.state.charData !== null) {
-            const data = this.state.charData
-            // 绩点
-            if(data.page_4.page_4_data.gpa_rank) {
-              if(data.page_4.page_4_data.gpa_rank <= 5) {
-                this.setState({
-                  show1: require("../assets/imgs/yhwz.png")
-                })
-              } else if (data.page_4.page_4_data.gpa_rank <= 30 && data.page_4.page_4_data.gpa_rank > 5) {
-                this.setState({
-                  show1: require("../assets/imgs/xxds.png")
-                })
-              } else {
-                this.setState({
-                  show1: require("../assets/imgs/fxlz.png")
-                })
-              }
+          if(this.state.charData !== null){
+            let data = this.state.charData
+          if(data.page_4.page_4_data.gpa_rank !== null) {
+            if(data.page_4.page_4_data.gpa_rank <= 5) {
+              this.setState({
+                show1: require("../assets/imgs/xffn.png")
+              })
+            } else if (data.page_4.page_4_data.gpa_rank <= 30 && data.page_4.page_4_data.gpa_rank > 5) {
+              this.setState({
+                show1: require("../assets/imgs/jjlr.png")
+              })
+            } else {
+              this.setState({
+                show1: require("../assets/imgs/xysr.png")
+              })
             }
-            // 课时排名
-            if(data.page_3.course_hours_defeat) {
-              if(data.page_3.course_hours_defeat > 50) {
-                this.setState({
-                  show: require("../assets/imgs/tfswz.png")
-                })
-              } else {
-                this.setState({
-                  show: require("../assets/imgs/ylqn.png")
-                })
-              }
+          }
+          // 课时排名
+          if(data.page_3.course_hours_defeat !== null) {
+            if(data.page_3.course_hours_defeat > 50) {
+              this.setState({
+                show: require("../assets/imgs/bsxxj.png")
+              })
+            } else {
+              this.setState({
+                show: require("../assets/imgs/lnqn.png")
+              })
             }
-            // 生活费
-            if(data.page_7.elec_expense) {
-              if(data.page_7.elec_expense > 202) {
-                this.setState({
-                  show3: require("../assets/imgs/shfss.png")
-                })
-              } else {
-                this.setState({
-                  show3: require("../assets/imgs/xts.png")
-                })
-              }
+          }
+          // 生活费
+          if(data.page_7.elec_expense !== null) {
+            if(data.page_7.elec_expense > 202) {
+              this.setState({
+                show3: require("../assets/imgs/gdqbydx.png")
+              })
+            } else {
+              this.setState({
+                show3: require("../assets/imgs/dlbhxh.png")
+              })
             }
-            if(data.page_1.join_year) {
-              if(data.page_1.join_year == 2019) {
-                this.setState({
-                  show2: require("../assets/imgs/tjhdxs.png")
-                })
-              } else if (data.page_1.join_year == 2018) {
-                this.setState({
-                  show2: require("../assets/imgs/ygjzqn.png")
-                })
-              } else {
-                this.setState({
-                  show2: require("../assets/imgs/ndssyq.png")
-                })
-              }
-            }
+          }
+          if(data.page_1.join_year !== null) {
+            if(data.page_1.join_year == 2019) {
+              this.setState({
+                show2: require("../assets/imgs/tjhdxs.png")
+              })
+            } else if (data.page_1.join_year == 2018) {
+              this.setState({
+                show2: require("../assets/imgs/ygkbqn.png")
+              })
+            } else {
+              this.setState({
+                show2: require("../assets/imgs/ndssyq.png")
+              })
+            }}
           }
         } else {
           alert(res.data.message)
@@ -144,18 +142,19 @@ class Characters extends React.Component {
   render() {
     const imgs = [
       {
-        img: require("../assets/imgs/rxjl.png")
+        img: this.state.show
       },
       {
-        img: require("../assets/imgs/zcm.png")
+        img: this.state.show1
       },
       {
-        img: require("../assets/imgs/hhy.png")
+        img: this.state.show2
       },
       {
-        img: require("../assets/imgs/mty.png")
+        img: this.state.show3
       },
     ]
+    console.log(imgs)
     // 防止不显示
     // setTimeout(() => {
     //   console.log("finish loading")
@@ -166,12 +165,8 @@ class Characters extends React.Component {
       <Suspense fallback={<Loading />}>
         <div>
           {/* <div id="char-loading"><Loading /></div> */}
-          <div className="characters-container" id="char">
-            <img src={imgs[opp - 1].img} className="characters"></img>
-            {this.state.show != null ? <img src={this.state.show} className="words1" /> : ""}
-            {this.state.show1 != null ? <img src={this.state.show1} className="words2" /> : ""}
-            {this.state.show2 != null ? <img src={this.state.show2} className="words3" /> : ""}
-            {this.state.show3 != null ? <img src={this.state.show3} className="words4" /> : ""}
+          <div className="characters-container">
+            {this.state.show !== null?<img src={imgs[opp].img} className="characters-container" id="char"></img>:""}
             <Link to="/letter" className="get">点击获取小家园的信</Link>
           </div>
         </div>
