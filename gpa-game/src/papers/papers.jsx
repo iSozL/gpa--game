@@ -234,7 +234,7 @@ const Papers = (props) => {
         </div>
         <div className="puzzle-after" id="unflip">
           <div className="puzzle-flip">
-            {show.index > 0 ? <img className="puzzle-bg" src={`http://q43qyx1kc.bkt.clouddn.com/${paper[show.index - 1].id}.png`} /> : ""}
+            {show.index > 0 ? <img className="puzzle-bg" src={`http://antelope.fun/${paper[show.index - 1].id}.png`} /> : ""}
             <img className="back" src={require("../assets/imgs/back.png")} onClick={unflip} />
           </div>
         </div>

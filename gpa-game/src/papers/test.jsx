@@ -305,7 +305,7 @@ const Show = (props) => {
         clearInterval(timer1);
         document.getElementById("test-loading").style.visibility = "hidden"
         document.getElementById("paper-show").style.visibility = "visible"
-        document.getElementById("paper-container").src="http://q43qyx1kc.bkt.clouddn.com/paperbg.jpg"
+        document.getElementById("paper-container").src="http://antelope.fun/paperbg.jpg"
       }, 10);
     }
   } else {
@@ -315,7 +315,6 @@ const Show = (props) => {
           clearInterval(timer1);
           document.getElementById("test-loading").style.visibility = "hidden"
           document.getElementById("paper-show").style.visibility = "visible"
-          // document.getElementById("paper-container").src="http://q43qyx1kc.bkt.clouddn.com/paperbg.jpg"
         }, 10);
         console.log("苹果")
       } else {
@@ -323,7 +322,7 @@ const Show = (props) => {
         clearInterval(timer1);
         document.getElementById("test-loading").style.visibility = "hidden"
         document.getElementById("paper-show").style.visibility = "visible"
-        document.getElementById("paper-container").src="http://q43qyx1kc.bkt.clouddn.com/paperbg.jpg"
+        document.getElementById("paper-container").src="http://antelope.fun/paperbg.jpg"
       }, 10);
     }
   }
@@ -334,7 +333,7 @@ const Show = (props) => {
       <div id="paper-show" style={{visibility: "hidden"}}>
         <img id="puzzle" src={papers[index].puzzle} className="puzzle"></img>
         <div style={{display: "flex", justifyContent: "center", alignItems: "center"}} onClick={papers[index].end ? () =>{dispatch({ type: UPDATE_INDEX, show: { index: show.index+1, show: false, play: show.play }})} : () => {dispatch({ type: UPDATE_INDEX, show: { index: show.index+1, show: show.show , play: false}});start1()}}>
-        <img src="http://q43qyx1kc.bkt.clouddn.com/nd.gif" className="paper-container" id="paper-container"></img>
+        <img src="http://antelope.fun/nd.gif" className="paper-container" id="paper-container"></img>
         <div className={papers[index].bg} id="paper-bg">
           <div key={index}>
             <div className="paper-name" style={{color: papers[index].ncolor}}>
